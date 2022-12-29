@@ -23,7 +23,7 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
-
+	virtual bool IsInFig(int, int) = 0;//Take a point -->Return True if the point in figer area  or  Flase if is not 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

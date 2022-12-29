@@ -2,6 +2,7 @@
 #include "Actions\ActionAddSquare.h"
 #include "Actions\ActionAddTriangle.h"
 #include "Actions\ActionAddEllipse.h"
+#include "Actions\ActionSelect.h"
 
 
 
@@ -62,6 +63,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			///create AddLineAction here
 			newAct = new ActionAddEllipse(this);
 			break;
+		case SELECT:
+			newAct = new ActionSelect(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
@@ -99,12 +103,11 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
-	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
-
-
-	///Add your code here to search for a figure given a point x,y	
-
+	for (int i = FigCount - 1; i >= 0; i--)
+		if (FigList[i]->IsInFig(x, y))
+		{
+			return FigList[i];
+		}
 	return NULL;
 }
 //==================================================================================//

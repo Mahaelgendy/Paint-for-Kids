@@ -132,18 +132,11 @@
     <ClCompile Include="ApplicationManager.cpp">
       <Filter>Application Manager</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Figures\CSquare.cpp">
       <Filter>Figures Classes</Filter>
     </ClCompile>
     <ClCompile Include="GUI\GUI.cpp">
       <Filter>GUI Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\ActionAddSquare.cpp">
-      <Filter>Action Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\ActionAddTriangle.cpp">
-      <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Figures\CTriangle.cpp">
       <Filter>Figures Classes</Filter>
@@ -152,6 +145,16 @@
       <Filter>Figures Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ActionAddEllipse.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddSquare.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddTriangle.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Actions\ActionSelect.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -219,9 +222,6 @@
     <ClInclude Include="Figures\CFigure.h">
       <Filter>Figures Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\Action.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
     <ClInclude Include="GUI\UI_Info.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
@@ -235,19 +235,25 @@
     <ClInclude Include="GUI\GUI.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ActionAddSquare.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionAddTriangle.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Figures\CTriangle.h">
       <Filter>Figures Classes</Filter>
     </ClInclude>
     <ClInclude Include="Figures\CEllipse.h">
       <Filter>Figures Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\Action.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\ActionAddEllipse.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddSquare.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddTriangle.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionSelect.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

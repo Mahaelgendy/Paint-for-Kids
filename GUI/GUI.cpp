@@ -86,7 +86,8 @@ ActionType GUI::MapInputToActionType() const
 			{
 			case ITM_SQUR: return DRAW_SQUARE;
 			case ITM_ELPS: return DRAW_ELPS;
-			case ITM_TRIG: return DRAW_TRIG;
+			case ITM_TRIG: return DRAW_TRIG; 
+			case ITM_SELECT: return SELECT;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -153,6 +154,7 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.jpg";
 	MenuItemImages[ITM_ELPS] = "images\\MenuItems\\Menu_Elps.jpg";
 	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_TRIG.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 
@@ -236,6 +238,7 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
 
 }
+
 void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool selected) const
 {
 	color DrawingClr;

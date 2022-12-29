@@ -130,7 +130,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\ActionAddEllipse.cpp" />
+    <ClCompile Include="Actions\ActionAddSquare.cpp" />
     <ClCompile Include="Actions\ActionAddTriangle.cpp" />
+    <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -169,15 +171,17 @@
     <ClCompile Include="Figures\CEllipse.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CSquare.cpp" />
-    <ClCompile Include="Actions\ActionAddSquare.cpp" />
     <ClCompile Include="Figures\CTriangle.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddEllipse.h" />
+    <ClInclude Include="Actions\ActionAddSquare.h" />
     <ClInclude Include="Actions\ActionAddTriangle.h" />
+    <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -201,8 +205,6 @@
     <ClInclude Include="Figures\CEllipse.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CSquare.h" />
-    <ClInclude Include="Actions\Action.h" />
-    <ClInclude Include="Actions\ActionAddSquare.h" />
     <ClInclude Include="Figures\CTriangle.h" />
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="GUI\UI_Info.h" />
