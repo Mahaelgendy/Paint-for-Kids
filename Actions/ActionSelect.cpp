@@ -26,14 +26,14 @@ void ActionSelect::Execute()
 	//Read 1st point and store in point P1
 	pGUI->GetPointClicked(P1.x, P1.y);
 
-	if (P.y < UI.StatusBarHeight || P.y > UI.height - UI.StatusBarHeight)
+	if (P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight)
 	{
 		bool flag = false; //false as long as the click is in wrong place
 		pGUI->PrintMessage("Please, Choose a valid Point");
 		while (!flag)
 		{
-			pGUI->GetPointClicked(P.x, P.y); //Get Pasting Point
-			if (!(P.y < UI.StatusBarHeight || P.y > UI.height - UI.StatusBarHeight))
+			pGUI->GetPointClicked(P1.x, P1.y); //Get Pasting Point
+			if (!(P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight))
 				flag = 1;
 		}
 	}
