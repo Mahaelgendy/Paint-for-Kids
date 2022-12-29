@@ -86,7 +86,7 @@ ActionType GUI::MapInputToActionType() const
 			{
 			case ITM_SQUR: return DRAW_SQUARE;
 			case ITM_ELPS: return DRAW_ELPS;
-			case ITM_RECT: return DRAW_RECT;
+			case ITM_TRIG: return DRAW_TRIG;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -152,9 +152,9 @@ void GUI::CreateDrawToolBar() const
 	string MenuItemImages[DRAW_ITM_COUNT];
 	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.jpg";
 	MenuItemImages[ITM_ELPS] = "images\\MenuItems\\Menu_Elps.jpg";
+	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_TRIG.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Elps.jpg";
-	
+
 
 	//TODO: Prepare images for each menu item and add it to the list
 
@@ -236,30 +236,52 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
 
 }
-void GUI::DrawRectangle(Point P1, Point P2,GfxInfo RectGfxInfo, bool selected) const
+void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool selected) const
 {
 	color DrawingClr;
-	if(selected)	
+	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else			
-		DrawingClr = RectGfxInfo.DrawClr;
-	
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
-	
+	else
+		DrawingClr = TriaGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, TriaGfxInfo.BorderWdth);	//Set Drawing color & width
+
 	drawstyle style;
-	if (RectGfxInfo.isFilled)	
+	if (TriaGfxInfo.isFilled)
 	{
-		style = FILLED;		
-		pWind->SetBrush(RectGfxInfo.FillClr);
+		style = FILLED;
+		pWind->SetBrush(TriaGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
+	//DrawTriangle(const int iX1, const int iY1, const int iX2, const int iY2, const int iX3, const int iY3, const drawstyle dsStyle)
 
-	
-	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	//pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
+//DrawEllipse(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle)
+void GUI::DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = EllipseGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, EllipseGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (EllipseGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(EllipseGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	//DrawTriangle(const int iX1, const int iY1, const int iX2, const int iY2, const int iX3, const int iY3, const drawstyle dsStyle)
+
+	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

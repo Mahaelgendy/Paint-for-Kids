@@ -19,7 +19,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	//If you want to change the menu items order, change the order here
 	ITM_SQUR,		//Square item in menu
 	ITM_ELPS,		//Ellipse item in menu
-	ITM_RECT,
+	ITM_TRIG,		//Tringel Items in menu		
 	
 	//TODO: Add more items names here
 

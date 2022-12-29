@@ -1,5 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\ActionAddSquare.h"
+#include "Actions\ActionAddTriangle.h"
+#include "Actions\ActionAddEllipse.h"
+
 
 
 //Constructor
@@ -51,10 +54,13 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_SQUARE:
 			newAct = new ActionAddSquare(this);
 			break;
+		case DRAW_TRIG:
+			newAct = new ActionAddTriangle(this);
+			break;
 
 		case DRAW_ELPS:
 			///create AddLineAction here
-
+			newAct = new ActionAddEllipse(this);
 			break;
 
 		case EXIT:

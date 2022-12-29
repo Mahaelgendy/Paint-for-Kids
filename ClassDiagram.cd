@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Action">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAACAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Actions\Action.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActionAddSquare">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Actions\ActionAddSquare.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApplicationManager">
+    <Position X="5.25" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ApplicationManager::__unnamed_enum_0405_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ApplicationManager.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAJAEIAAQAAEQAAAAAAAAAAAAQACAAAAABAAAAI=</HashCode>
+      <FileName>ApplicationManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFigure">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQBAAAAAkAAAAAQAAAAAAAAABAAAAIAAAQAAAAI=</HashCode>
+      <FileName>Figures\CFigure.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSquare">
+    <Position X="13" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQACAAAAAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Figures\CSquare.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI">
+    <Position X="1.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAALAAAQCBAABgEAQkAAABBAAQAAAAAAAQAgAgAA=</HashCode>
+      <FileName>GUI\GUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="UI_Info" Collapsed="true">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgCAAIAAIAAQAIQAZAAAAAAAgAAAAAAAAABAAAgAAAg=</HashCode>
+      <FileName>GUI\UI_Info.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

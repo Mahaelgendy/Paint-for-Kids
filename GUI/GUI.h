@@ -34,7 +34,11 @@ public:
 	
 	// -- Figures Drawing functions
 	void DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected=false) const;  //Draw a Square
-	void DrawRectangle(Point P1, Point P2,GfxInfo RectGfxInfo, bool selected) const; //Draw a rectangle
+	void DrawTriangle(Point,Point,Point,  GfxInfo TriaGfxInfo, bool selected = false) const;  //Draw a Triangle
+	void DrawEllipse(Point, Point, GfxInfo EllipseGfxInfo, bool selected = false) const;		//Drow a elips
+	//DrawEllipse(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle)
+
+	
 	///TODO: Make similar functions for drawing all other figures.
 	
 	void PrintMessage(string msg) const;	//Print a message on Status bar

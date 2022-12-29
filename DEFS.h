@@ -8,8 +8,8 @@ enum ActionType //The actions supported (you can add more if needed)
 {
 	DRAW_SQUARE,	//Draw a Square
 	DRAW_ELPS,		//Draw an Ellipse
+	DRAW_TRIG,		//Draw an Triangle
 	DRAW_HEX,		//Draw a Hexagon
-	DRAW_RECT,
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color

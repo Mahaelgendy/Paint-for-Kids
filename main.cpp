@@ -7,13 +7,13 @@ int main()
 	GUI* g=new GUI();
 	
 	
-	window* w=g->CreateWind(200, 300, 10, 10);
+	window* w=g->CreateWind(400, 100, 10, 10);
 	int x, y;
-	w->WaitMouseClick(x, y);
-	*/
+	w->WaitMouseClick(x, y);*/
 	
+	
+
 	ApplicationManager AppManager;
 	AppManager.Run();		
 	return 0;
 }
-
