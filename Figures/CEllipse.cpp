@@ -15,9 +15,14 @@ void CEllipse::DrawMe(GUI* pGUI) const
 
 }
 bool CEllipse::IsInFig(int x, int y) {
-	/*if (pow(x - P1.x, 2) / pow(P2.x, 2) + pow(y - P1.y, 2) / pow(P2.y, 2) <= 1)
-	{
-		return true;
-	}*/
-	return false;
+    Point center;
+    center.x = 0.5 * (P2.x + P1.x);
+    center.y = 0.5 * (P2.y + P1.y);
+    float a = abs(P2.x - P1.x) / 2;
+    float b = abs(P2.y - P1.y) / 2;
+    float check = (pow(x - center.x, 2) / pow(a, 2)) + (pow(y - center.y, 2) / pow(b, 2));
+    if (check <= 1)
+        return true;
+
+    return false;
 }

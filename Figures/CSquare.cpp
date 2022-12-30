@@ -15,13 +15,7 @@ void CSquare::DrawMe(GUI* pGUI) const
 
 }
 bool CSquare::IsInFig(int x, int y) {
-	if (
-		(x >= min(TopLeftCorner.x,( TopLeftCorner.x + length) ) &&
-			x <= max(TopLeftCorner.x, (TopLeftCorner.x + length) ) &&
-			y >= min(TopLeftCorner.x, (TopLeftCorner.x + length) ) &&
-			y <= max(TopLeftCorner.x, (TopLeftCorner.x + length) )
-		)
-		)
+	if (x >= TopLeftCorner.x && x <= (TopLeftCorner.x + length) && y >= TopLeftCorner.y && y <= (TopLeftCorner.y + length))
 	{
 		return true;
 	}
