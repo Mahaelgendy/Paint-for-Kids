@@ -12,6 +12,7 @@ public:
 		CEllipse(Point, Point, GfxInfo );
 		virtual void DrawMe(GUI* pOut) const;
 		virtual bool IsInFig(int, int);
+		virtual void Resize(float);
 };
 
 #endif

@@ -13,6 +13,47 @@ void CTriangle::DrawMe(GUI* pGUI) const
 	pGUI->DrawTriangle(Corner1, Corner2, Corner3, FigGfxInfo, Selected);
 
 }
+void CTriangle::Resize(float size)
+{
+	if (size == 0.5) size = -1;
+	else if(size == 0.24) size = -(4.0 / 3);
+
+	Point O;
+	O.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
+	O.y = (Corner1.y + Corner2.y + Corner3.y) / 3;
+	if (Corner1.x <= O.x)
+		Corner1.x -= (O.x - Corner1.x) * size / 2;
+	else
+		Corner1.x += (Corner1.x - O.x) * size / 2;
+
+	if (Corner2.x <= O.x)
+		Corner2.x -= (O.x - Corner2.x) * size / 2;
+	else
+		Corner2.x += (Corner2.x - O.x) * size / 2;
+
+	if (Corner3.x <= O.x)
+		Corner3.x -= (O.x - Corner3.x) * size / 2;
+	else
+		Corner3.x += (Corner3.x - O.x) * size / 2;
+
+	if (Corner1.y <= O.y)
+		Corner1.y -= (O.y - Corner1.y) * size / 2;
+	else
+		Corner1.y += (Corner1.y - O.y) * size / 2;
+
+	if (Corner2.y <= O.y)
+		Corner2.y -= (O.y - Corner2.y) * size / 2;
+	else
+		Corner2.y += (Corner2.y - O.y) * size / 2;
+
+	if (Corner3.y <= O.y)
+		Corner3.y -= (O.y - Corner3.y) * size / 2;
+	else
+		Corner3.y += (Corner3.y - O.y) * size / 2;
+
+	//to complete
+
+}
 float area(int x1, int y1, int x2, int y2, int x3, int y3)
 {
 	return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0);

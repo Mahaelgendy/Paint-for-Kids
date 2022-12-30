@@ -11,7 +11,10 @@ void CEllipse::DrawMe(GUI* pGUI) const
 	//DrawEllipse(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle)
 
 	pGUI->DrawEllipse(P1, P2, FigGfxInfo, Selected);
-
+}
+void CEllipse::Resize(float size) {
+	this->P2.x = this->P2.x * size;
+	this->P2.y = this->P2.y * size;
 
 }
 bool CEllipse::IsInFig(int x, int y) {

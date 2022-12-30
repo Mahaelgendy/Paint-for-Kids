@@ -14,6 +14,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color
 	SELECT,			//Select figer(s)
+	GO_BACK,
 	DEL,			//Delete a figure(s)
 	MOVE,			//Move a figure(s)
 	RESIZE,			//Resize a figure(s)
@@ -29,9 +30,15 @@ enum ActionType //The actions supported (you can add more if needed)
 	EMPTY,			//A click on empty place in the toolbar
 
 	TO_DRAW,		//Switch interface to Draw mode
-	TO_PLAY			//Switch interface to Play mode
+	TO_PLAY,     	//Switch interface to Play mode
 
 	///TODO: Add more action types (if needed)
+	TO_SIZE,
+	HALF,
+	QUARTER,
+	DOUBLE1,
+	QUADRUPLE,
+	BACK2
 };
 
 struct Point	//To be used for figures points

@@ -5,6 +5,8 @@
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionSelect.h"
 #include "Actions\ActionDelete.h"
+#include "Actions\ActionResize.h"
+#include "Actions\ActionSwitchToDrawMode.h"
 
 
 
@@ -61,7 +63,6 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_TRIG:
 			newAct = new ActionAddTriangle(this);
 			break;
-
 		case DRAW_ELPS:
 			///create AddLineAction here
 			newAct = new ActionAddEllipse(this);
@@ -73,7 +74,12 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case SELECT:
 			newAct = new ActionSelect(this);
 			break;
-
+		case RESIZE :
+			newAct = new ActionResize(this,SelectedFig);
+			break;
+		case GO_BACK:
+			newAct = new ActionSwitchToDrawMode(this);
+			break;
 		case DEL:
 			newAct = new ActionDelete(this);
 			break;
@@ -125,6 +131,22 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 		{
 			return FigList[i];
 		}
+	return NULL;
+}
+int ApplicationManager::getSelectedFigure()
+{
+
+	for (int i = 0; i < FigCount; i++)
+		if (FigList[i]->IsSelected())
+			return i;
+	return -1;
+}
+CFigure* ApplicationManager::GetSelectedFigure() const
+{
+	//check if a figure selected
+	for (int i = (FigCount - 1); i >= 0; i--) {
+		if (FigList[i]->IsSelected()) return FigList[i];
+	}
 	return NULL;
 }
 //==================================================================================//
