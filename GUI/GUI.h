@@ -36,6 +36,7 @@ public:
 	void DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected=false) const;  //Draw a Square
 	void DrawTriangle(Point,Point,Point,  GfxInfo TriaGfxInfo, bool selected = false) const;  //Draw a Triangle
 	void DrawEllipse(Point, Point, GfxInfo EllipseGfxInfo, bool selected = false) const;		//Drow a elips
+	void DrawHexagon(Point P1, int Horizentallength, int Vertivallength, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a Square
 	//DrawEllipse(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle)
 
 	

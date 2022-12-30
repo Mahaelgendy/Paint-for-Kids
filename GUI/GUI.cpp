@@ -87,6 +87,7 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_SQUR: return DRAW_SQUARE;
 			case ITM_ELPS: return DRAW_ELPS;
 			case ITM_TRIG: return DRAW_TRIG; 
+			case ITM_HEXA: return DRAW_HEX;
 			case ITM_SELECT: return SELECT;
 			case ITM_EXIT: return EXIT;	
 			
@@ -154,6 +155,7 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.jpg";
 	MenuItemImages[ITM_ELPS] = "images\\MenuItems\\Menu_Elps.jpg";
 	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_TRIG.jpg";
+	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\menu_hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
@@ -284,7 +286,32 @@ void GUI::DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected)
 
 	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
 }
+void GUI::DrawHexagon(Point TopLeft, int Horizentallength, int Vertivallength, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
 
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	int px1 = TopLeft.x, px2 = TopLeft.x + Horizentallength, px3 = TopLeft.x + (1.5 * Horizentallength), px4 = (TopLeft.x + Horizentallength), px5 = px1, px6 = TopLeft.x - (0.5 * Horizentallength);
+	int py1 = TopLeft.y, py2 = py1, py3 = TopLeft.y + Vertivallength, py4 = TopLeft.y + (2 * Vertivallength), py5 = py4, py6 = TopLeft.y + Vertivallength;
+	int hX[6] = { px1,px2,px3,px4,px5,px6 };
+	int hY[6] = { py1,py2,py3,py4,py5,py6 };
+
+	pWind->DrawPolygon(hX, hY, 6);
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

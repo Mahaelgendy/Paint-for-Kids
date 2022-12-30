@@ -2,6 +2,7 @@
 #include "Actions\ActionAddSquare.h"
 #include "Actions\ActionAddTriangle.h"
 #include "Actions\ActionAddEllipse.h"
+#include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionSelect.h"
 
 
@@ -62,6 +63,10 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_ELPS:
 			///create AddLineAction here
 			newAct = new ActionAddEllipse(this);
+			break;
+		case DRAW_HEX:
+			///create AddLineAction here
+			newAct = new ActionAddHexagon(this);
 			break;
 		case SELECT:
 			newAct = new ActionSelect(this);

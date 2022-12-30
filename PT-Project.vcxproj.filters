@@ -157,6 +157,12 @@
     <ClCompile Include="Actions\ActionSelect.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Figures\CHexagon.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddHexagon.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -229,9 +235,6 @@
       <Filter>Application Manager</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="Figures\CSquare.h">
-      <Filter>Figures Classes</Filter>
-    </ClInclude>
     <ClInclude Include="GUI\GUI.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
@@ -255,6 +258,15 @@
     </ClInclude>
     <ClInclude Include="Actions\ActionSelect.h">
       <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CHexagon.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddHexagon.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CSquare.h">
+      <Filter>Figures Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
