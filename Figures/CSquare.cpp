@@ -14,6 +14,10 @@ void CSquare::DrawMe(GUI* pGUI) const
 	
 
 }
+void CSquare::Resize(float size) {
+	this->length = this->length * size;
+
+}
 bool CSquare::IsInFig(int x, int y) {
 	if (
 		(x >= min(TopLeftCorner.x,( TopLeftCorner.x + length) ) &&
