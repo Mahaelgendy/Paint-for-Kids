@@ -15,9 +15,9 @@ void CEllipse::DrawMe(GUI* pGUI) const
 
 }
 bool CEllipse::IsInFig(int x, int y) {
-	if (pow(x - P1.x, 2) / pow(P2.x, 2) + pow(y - P1.y, 2) / pow(P2.y, 2) <= 1)
+	/*if (pow(x - P1.x, 2) / pow(P2.x, 2) + pow(y - P1.y, 2) / pow(P2.y, 2) <= 1)
 	{
 		return true;
-	}
+	}*/
 	return false;
 }

@@ -1,4 +1,5 @@
 #include "GUI.h"
+#include <iostream>
 
 //constructor make necessary initializations
 GUI::GUI()
@@ -89,6 +90,7 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_TRIG: return DRAW_TRIG; 
 			case ITM_HEXA: return DRAW_HEX;
 			case ITM_SELECT: return SELECT;
+			case ITM_DELETE:  return DEL;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -157,14 +159,16 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_TRIG.jpg";
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\menu_hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
-	for(int i=0; i<DRAW_ITM_COUNT; i++)
+	for (int i = 0; i < DRAW_ITM_COUNT; i++) {
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth,0,UI.MenuItemWidth, UI.ToolBarHeight);
+	}
 
 
 

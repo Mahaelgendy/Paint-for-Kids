@@ -4,6 +4,8 @@
 #include "Actions\ActionAddEllipse.h"
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionSelect.h"
+#include "Actions\ActionDelete.h"
+
 
 
 
@@ -72,6 +74,10 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new ActionSelect(this);
 			break;
 
+		case DEL:
+			newAct = new ActionDelete(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -105,6 +111,12 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+int* ApplicationManager::getFigCount() {
+	return &FigCount;
+};
+CFigure** ApplicationManager::getFigList() {
+	return FigList;
+};
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
