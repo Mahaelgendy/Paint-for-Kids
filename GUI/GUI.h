@@ -48,6 +48,7 @@ public:
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 	void setCrntDrawColor(color _color) const;	//set current drwawing color
 	void setCrntFillColor(color _fillColor) const;	//set current filling color
+	void setBackgroundColor(color _backgroundColor) const;
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width

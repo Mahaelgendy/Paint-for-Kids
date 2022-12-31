@@ -275,6 +275,10 @@ void GUI::setCrntFillColor(color _fillColor) const
 	UI.FillColor = _fillColor;
 	
 }
+void GUI::setBackgroundColor(color _backgroundColor) const
+{
+	UI.BkGrndColor = _backgroundColor;
+}
 
 color GUI::getCrntDrawColor() const	//get current drwawing color
 {	return UI.DrawColor;	}

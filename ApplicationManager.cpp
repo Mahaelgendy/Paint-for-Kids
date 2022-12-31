@@ -161,6 +161,14 @@ CFigure* ApplicationManager::GetSelectedFigure() const
 	}
 	return NULL;
 }
+CFigure* ApplicationManager::GetNotSelectedFigure() const
+{
+	//check if a figure selected
+	for (int i = (FigCount - 1); i >= 0; i--) {
+		if (!FigList[i]->IsSelected()) return FigList[i];
+	}
+	return NULL;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
