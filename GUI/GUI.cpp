@@ -385,7 +385,7 @@ void GUI::DrawHexagon(Point TopLeft, int Horizentallength, int Vertivallength, G
 	int hX[6] = { px1,px2,px3,px4,px5,px6 };
 	int hY[6] = { py1,py2,py3,py4,py5,py6 };
 
-	pWind->DrawPolygon(hX, hY, 6);
+	pWind->DrawPolygon(hX, hY, 6, style);
 }
 
 

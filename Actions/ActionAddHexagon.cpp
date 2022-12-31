@@ -17,12 +17,12 @@ void ActionAddHexagon::Execute()
 	GUI* pGUI = pManager->GetGUI();
 
 
-	GfxInfo SqrGfxInfo;
-	SqrGfxInfo.isFilled  = pManager->getFillColor();	//default is not filled
+	GfxInfo HexGfxInfo;
+	HexGfxInfo.isFilled  = pManager->getFillColor();	//default is not filled
 	//get drawing, filling colors and pen width from the interface
-	SqrGfxInfo.DrawClr = pGUI->getCrntDrawColor();
-	SqrGfxInfo.FillClr = pGUI->getCrntFillColor();
-	SqrGfxInfo.BorderWdth = pGUI->getCrntPenWidth();
+	HexGfxInfo.DrawClr = pGUI->getCrntDrawColor();
+	HexGfxInfo.FillClr = pGUI->getCrntFillColor();
+	HexGfxInfo.BorderWdth = pGUI->getCrntPenWidth();
 
 
 	//Step 1 - Read Hexagon data from the user
@@ -52,7 +52,7 @@ void ActionAddHexagon::Execute()
 
 
 	//Step 3 - Create a Square with the parameters read from the user
-	CHexagon* H = new CHexagon(topLeft, horLen,verLen, SqrGfxInfo);
+	CHexagon* H = new CHexagon(topLeft, horLen,verLen, HexGfxInfo);
 
 	//Step 4 - Add the Square to the list of figures
 	pManager->AddFigure(H);
