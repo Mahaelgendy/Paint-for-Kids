@@ -47,7 +47,7 @@ void ActionAddHexagon::Execute()
 
 	//2.2- Calcuate square side legnth
 	//The square side length would be the longer distance between the two points coordinates
-	int horLen = abs(topLeft.x - P2.x);
+	int horLen = abs(P1.x - P2.x);
 	int verLen = sqrt(pow(horLen, 2) - pow((0.5 * horLen), 2));
 
 

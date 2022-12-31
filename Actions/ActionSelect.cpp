@@ -40,7 +40,10 @@ void ActionSelect::Execute()
 
 	pGUI->ClearStatusBar();
 
+
 	CFigure* fig= pManager->GetFigure(P1.x, P1.y);
+	 
+
 	
 
 	if (fig != NULL)
@@ -48,11 +51,12 @@ void ActionSelect::Execute()
 		if (fig->IsSelected())
 		{
 			fig->SetSelected(false);
-
+			
 		}
 		else
 		{
 			fig->SetSelected(true);
+			fig->PrintInfo(pGUI);
 		}
 	}
 

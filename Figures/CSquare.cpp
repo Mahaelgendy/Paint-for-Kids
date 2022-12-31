@@ -4,6 +4,9 @@ CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo
 {
 	TopLeftCorner = P1;
 	length = len;
+	area = float(abs((TopLeftCorner.x - (TopLeftCorner.x+ length)) * (TopLeftCorner.y - (TopLeftCorner.y + length))));
+	ID = 100+ newID++;
+	
 }
 	
 
@@ -24,4 +27,13 @@ bool CSquare::IsInFig(int x, int y) {
 		return true;
 	}
 	return false;
+}
+void CSquare::PrintInfo(GUI* pOut)
+{
+	pOut->PrintMessage(string("Square =>ID: ") + to_string(ID) +
+		" =>Width: " + std::to_string(
+			abs( (TopLeftCorner.x - (TopLeftCorner.x + length)) )
+			) +
+			" =>Height: " + std::to_string(abs((TopLeftCorner.y - (TopLeftCorner.y + length)))) +
+			" =>Area: " + std::to_string(int(area)));
 }

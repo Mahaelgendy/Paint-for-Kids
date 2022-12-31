@@ -13,6 +13,7 @@ public:
 		virtual void DrawMe(GUI* pOut) const;
 		virtual bool IsInFig(int, int);
 		virtual void Resize(float);
+		virtual void PrintInfo(GUI* pOut);
 };
 
 #endif

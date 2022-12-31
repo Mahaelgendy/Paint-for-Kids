@@ -1,10 +1,13 @@
 #include "CEllipse.h"
+#include<string>
 
 //constractor
 CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	 P1=_P1;
 	P2=_P2;
+	ID = 200 + newID++;
+	area = 3.1415f * P1.x * P2.x;
 }
 void CEllipse::DrawMe(GUI* pGUI) const
 {
@@ -16,6 +19,19 @@ void CEllipse::Resize(float size) {
 	this->P2.x = this->P2.x * size;
 	this->P2.y = this->P2.y * size;
 
+}
+void CEllipse::PrintInfo(GUI* pOut)
+{
+	Point center;
+	center.x = 0.5 * (P2.x + P1.x);
+	center.y = 0.5 * (P2.y + P1.y);
+
+	pOut->PrintMessage(string("Ellipse =>ID: ") + to_string(ID) + 
+		" =>Width: " + to_string(abs(P1.x - P2.x)) +
+		" =>Height: " + std::to_string(std::abs(P1.y - P1.y)) +
+		" =>Area: " + std::to_string(area) +
+		" =>center: ( " + std::to_string(center.x) +
+		", " + to_string(center.y) + " )");
 }
 bool CEllipse::IsInFig(int x, int y) {
     Point center;
