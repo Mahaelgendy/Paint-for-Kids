@@ -28,6 +28,17 @@ void ActionFillColor::Execute()
 	pGUI->setCrntFillColor(newFillColor);
 	
 	
+	CFigure* fig = pManager->GetSelectedFigure();
+	if (fig != NULL && fig->IsSelected())
+	{
+		fig->ChngFillClr(newFillColor);
+			fig->SetSelected(false);
+
+	}
+	else
+	{
+		pGUI->setCrntFillColor(newFillColor);
+	}
 
 
 	pGUI->ClearStatusBar();
