@@ -7,6 +7,10 @@
 #include "Actions\ActionColor.h"
 #include "Actions\ActionFillColor.h"
 #include "Actions\ActionFillButton.h"
+#include "Actions\ActionDelete.h"
+#include "Actions\ActionResize.h"
+#include "Actions\ActionSwitchToDrawMode.h"
+
 
 
 
@@ -62,7 +66,6 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_TRIG:
 			newAct = new ActionAddTriangle(this);
 			break;
-
 		case DRAW_ELPS:
 			///create AddLineAction here
 			newAct = new ActionAddEllipse(this);
@@ -82,6 +85,15 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case SELECT_FILL_COLOR:
 			newAct = new ActionFillButton(this);
+			break;
+		case RESIZE :
+			newAct = new ActionResize(this,SelectedFig);
+			break;
+		case GO_BACK:
+			newAct = new ActionSwitchToDrawMode(this);
+			break;
+		case DEL:
+			newAct = new ActionDelete(this);
 			break;
 
 		case EXIT:
@@ -117,6 +129,12 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+int* ApplicationManager::getFigCount() {
+	return &FigCount;
+};
+CFigure** ApplicationManager::getFigList() {
+	return FigList;
+};
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
@@ -125,6 +143,22 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 		{
 			return FigList[i];
 		}
+	return NULL;
+}
+int ApplicationManager::getSelectedFigure()
+{
+
+	for (int i = 0; i < FigCount; i++)
+		if (FigList[i]->IsSelected())
+			return i;
+	return -1;
+}
+CFigure* ApplicationManager::GetSelectedFigure() const
+{
+	//check if a figure selected
+	for (int i = (FigCount - 1); i >= 0; i--) {
+		if (FigList[i]->IsSelected()) return FigList[i];
+	}
 	return NULL;
 }
 //==================================================================================//

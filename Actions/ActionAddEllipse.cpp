@@ -30,10 +30,32 @@ void ActionAddEllipse::Execute()
 	pGUI->PrintMessage("New Ellips: Click at first point");	
 	//Read 1st point and store in point P1
 	pGUI->GetPointClicked(P1.x, P1.y);
+	if (P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight)
+	{
+		bool flag = false; //false as long as the click is in wrong place
+		pGUI->PrintMessage("Please, Choose a valid Point");
+		while (!flag)
+		{
+			pGUI->GetPointClicked(P1.x, P1.y); //Get Pasting Point
+			if (!(P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight))
+				flag = 1;
+		}
+	} 
 
 	pGUI->PrintMessage("New Ellips: Click at second point");
 	//Read 2nd point and store in point P2
 	pGUI->GetPointClicked(P2.x, P2.y);
+	if (P2.y < UI.StatusBarHeight || P2.y > UI.height - UI.StatusBarHeight)
+	{
+		bool flag = false; //false as long as the click is in wrong place
+		pGUI->PrintMessage("Please, Choose a valid Point");
+		while (!flag)
+		{
+			pGUI->GetPointClicked(P2.x, P2.y); //Get Pasting Point
+			if (!(P2.y < UI.StatusBarHeight || P2.y > UI.height - UI.StatusBarHeight))
+				flag = 1;
+		}
+	}
 
 
 	pGUI->ClearStatusBar();
