@@ -89,6 +89,9 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_TRIG: return DRAW_TRIG; 
 			case ITM_HEXA: return DRAW_HEX;
 			case ITM_SELECT: return SELECT;
+			case ITM_DRAW_COLOR: return CHNG_DRAW_CLR;
+			case ITM_FILL_COLOR: return CHNG_FILL_CLR;
+			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -157,6 +160,10 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_TRIG.jpg";
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\menu_hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
+	MenuItemImages[ITM_DRAW_COLOR] = "images\\MenuItems\\Color1.jpg";
+	MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
+	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";
+
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 
@@ -200,6 +207,17 @@ void GUI::PrintMessage(string msg) const	//Prints a message on status bar
 	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+
+void GUI::setCrntDrawColor(color _color) const
+{
+	UI.DrawColor = _color;
+}
+
+void GUI::setCrntFillColor(color _fillColor) const
+{
+	UI.FillColor = _fillColor;
+	
+}
 
 color GUI::getCrntDrawColor() const	//get current drwawing color
 {	return UI.DrawColor;	}

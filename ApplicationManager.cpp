@@ -4,6 +4,9 @@
 #include "Actions\ActionAddEllipse.h"
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionSelect.h"
+#include "Actions\ActionColor.h"
+#include "Actions\ActionFillColor.h"
+#include "Actions\ActionFillButton.h"
 
 
 
@@ -12,7 +15,7 @@ ApplicationManager::ApplicationManager()
 {
 	//Create Input and output
 	pGUI = new GUI;	
-	
+	filled = false;
 	FigCount = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
@@ -70,6 +73,15 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case SELECT:
 			newAct = new ActionSelect(this);
+			break;
+		case CHNG_DRAW_CLR:
+			newAct = new ActionColor(this);
+			break;
+		case CHNG_FILL_CLR:
+			newAct = new ActionFillColor(this);
+			break;
+		case SELECT_FILL_COLOR:
+			newAct = new ActionFillButton(this);
 			break;
 
 		case EXIT:
@@ -130,6 +142,17 @@ void ApplicationManager::UpdateInterface() const
 GUI *ApplicationManager::GetGUI() const
 {	return pGUI; }
 ////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::setFillColor(bool _fillColor)
+{
+	filled = _fillColor;
+}
+
+bool ApplicationManager::getFillColor()
+{
+	return filled;
+}
+
+
 //Destructor
 ApplicationManager::~ApplicationManager()
 {

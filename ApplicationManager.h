@@ -18,10 +18,13 @@ private:
 
 	//Pointers to Input and Output classes
 	GUI* pGUI;
+	bool filled;
 
 
 public:
 	ApplicationManager();
+
+
 	~ApplicationManager();
 
 	void Run();		//to run the application
@@ -36,6 +39,10 @@ public:
 
 	// -- Interface Management Functions	
 	GUI* GetGUI() const; //Return pointer to the interface
-	void UpdateInterface() const;	//Redraws all the drawing window	
+	void UpdateInterface() const;	//Redraws all the drawing window
+
+	bool getFillColor();
+	void setFillColor(bool);
+	
 };
 #endif

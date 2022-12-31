@@ -18,7 +18,7 @@ void ActionAddEllipse::Execute()
 
 
 	GfxInfo EllipGfxInfo;
-	EllipGfxInfo.isFilled = false;	//default is not filled
+	EllipGfxInfo.isFilled = pManager->getFillColor();	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	EllipGfxInfo.DrawClr = pGUI->getCrntDrawColor();
 	EllipGfxInfo.FillClr = pGUI->getCrntFillColor();

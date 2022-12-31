@@ -133,6 +133,9 @@
     <ClCompile Include="Actions\ActionAddHexagon.cpp" />
     <ClCompile Include="Actions\ActionAddSquare.cpp" />
     <ClCompile Include="Actions\ActionAddTriangle.cpp" />
+    <ClCompile Include="Actions\ActionColor.cpp" />
+    <ClCompile Include="Actions\ActionFillButton.cpp" />
+    <ClCompile Include="Actions\ActionFillColor.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -184,6 +187,9 @@
     <ClInclude Include="Actions\ActionAddHexagon.h" />
     <ClInclude Include="Actions\ActionAddSquare.h" />
     <ClInclude Include="Actions\ActionAddTriangle.h" />
+    <ClInclude Include="Actions\ActionColor.h" />
+    <ClInclude Include="Actions\ActionFillButton.h" />
+    <ClInclude Include="Actions\ActionFillColor.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />

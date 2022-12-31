@@ -163,6 +163,15 @@
     <ClCompile Include="Actions\ActionAddHexagon.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionFillColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionFillButton.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -267,6 +276,15 @@
     </ClInclude>
     <ClInclude Include="Figures\CSquare.h">
       <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionFillColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionFillButton.h">
+      <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

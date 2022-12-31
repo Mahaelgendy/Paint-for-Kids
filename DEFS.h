@@ -20,6 +20,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	ROTATE,			//Rotate a figure(s)
 	SEND_BACK,		//Send a figure to the back of all figures
 	BRNG_FRNT,		//Bring a figure to the front of all figures
+	SELECT_FILL_COLOR,
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
 	EXIT,			//Exit the application

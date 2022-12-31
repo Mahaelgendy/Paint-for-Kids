@@ -22,6 +22,9 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_TRIG,		//Tringel item in menu
 	ITM_HEXA,
 	ITM_SELECT,		//Select item in menue
+	ITM_DRAW_COLOR, //Draw Color item in menue
+	ITM_FILL_COLOR, //Fill Color item in menue
+	ITM_FILL_BUTTON,
 	
 	//TODO: Add more items names here
 
