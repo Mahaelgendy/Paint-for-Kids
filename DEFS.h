@@ -39,7 +39,10 @@ enum ActionType //The actions supported (you can add more if needed)
 	QUARTER,
 	DOUBLE1,
 	QUADRUPLE,
-	BACK2
+	BACK2,
+	PLAY_SHAPES,    //play with only shapes
+	PLAY_COLORS,	//play with only colors
+	PLAY_SHAPES_COLORS,
 };
 
 struct Point	//To be used for figures points

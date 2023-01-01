@@ -10,6 +10,7 @@
 #include "Actions\ActionDelete.h"
 #include "Actions\ActionResize.h"
 #include "Actions\ActionSwitchToDrawMode.h"
+#include "Actions\ActionSwitchToPlay.h"
 
 
 
@@ -95,7 +96,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DEL:
 			newAct = new ActionDelete(this);
 			break;
-
+		case TO_PLAY:
+			newAct = new ActionSwitchToPlay(this);
+			break;
 		case EXIT:
 			///create ExitAction here
 			
