@@ -45,12 +45,13 @@ void ActionFillColor::Execute()
 	else
 	{
 		
-		if (figNotSelected != NULL && fillColor == false)
+		if (fillColor == false)
 		{
 			pGUI->setBackgroundColor(newFillColor);
 			pGUI->ClearDrawArea();
 		}
-		pGUI->setCrntFillColor(newFillColor);
+		else
+			pGUI->setCrntFillColor(newFillColor);
 	}
 
 
