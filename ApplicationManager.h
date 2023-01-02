@@ -38,6 +38,7 @@ public:
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	CFigure* GetSelectedFigure() const;
 	CFigure* GetNotSelectedFigure() const;
+	CFigure* DrawnFigs(int i) const;
 	int* getFigCount();
 	CFigure** getFigList();
 	int getSelectedFigure();
