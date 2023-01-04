@@ -134,6 +134,7 @@
     <ClCompile Include="Actions\ActionAddSquare.cpp" />
     <ClCompile Include="Actions\ActionAddTriangle.cpp" />
     <ClCompile Include="Actions\ActionColor.cpp" />
+    <ClCompile Include="Actions\ActionColorMenu.cpp" />
     <ClCompile Include="Actions\ActionFillButton.cpp" />
     <ClCompile Include="Actions\ActionFillColor.cpp" />
     <ClCompile Include="Actions\ActionDelete.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Actions\ActionAddSquare.h" />
     <ClInclude Include="Actions\ActionAddTriangle.h" />
     <ClInclude Include="Actions\ActionColor.h" />
+    <ClInclude Include="Actions\ActionColorMenu.h" />
     <ClInclude Include="Actions\ActionFillButton.h" />
     <ClInclude Include="Actions\ActionFillColor.h" />
     <ClInclude Include="Actions\ActionDelete.h" />

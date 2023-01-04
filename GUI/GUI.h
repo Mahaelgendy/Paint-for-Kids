@@ -31,7 +31,7 @@ public:
 
 	void CreateResizeToolBar() const;
 	void ClearToolBar() const;
-
+	void CreateColorToolBar() const;
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	

@@ -11,6 +11,7 @@ enum GUI_MODE	//Graphical user interface mode
 {
 	MODE_DRAW,	//Drawing mode (startup mode)
 	MODE_SIZE,
+	MODE_COLOR,
 	MODE_PLAY	//Playing mode
 };
 
@@ -23,18 +24,36 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_TRIG,		//Tringel item in menu
 	ITM_HEXA,
 	ITM_SELECT,		//Select item in menue
-	ITM_DRAW_COLOR, //Draw Color item in menue
-	ITM_FILL_COLOR, //Fill Color item in menue
-	ITM_FILL_BUTTON,
+	ITEM_COLOR,
+	
+	//ITM_DRAW_COLOR, //Draw Color item in menue
+	//ITM_FILL_COLOR, //Fill Color item in menue
+	//ITM_FILL_BUTTON,
 	
 	ITIM_RESIZE,
+	
 	//TODO: Add more items names here
 	ITM_DELETE,
 	ITM_PLAY,
+	
 	ITM_EXIT,		//Exit item
 	
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
+};
+enum ColorMenuItem
+{
+	ITM_BORDER,
+	ITM_FILL,
+	ITM_BUTTON,
+	ITM_BLACK,
+	ITM_WHITE,
+	ITM_MLSJYROSE,
+	ITM_LAVENDERBLUSH,
+	ITM_LAVENDER,
+	ITM_ALJCEBLU,
+	ITM_BACK4,
+	COLOR_ITM_COUNT
 };
 enum SizeMenuItem // The items of colors
 {
