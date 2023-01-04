@@ -11,6 +11,11 @@
 #include "Actions\ActionResize.h"
 #include "Actions\ActionSwitchToDrawMode.h"
 #include "Actions\ActionSave.h"
+#include "Actions\ActionLoad.h"
+#include <string>
+#include <string.h>
+#include <iostream>
+#include<sstream> 
 
 
 
@@ -100,6 +105,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case SAVE:
 			newAct = new ActionSave(this, FigCount);
 			break;
+		case LOAD:
+			newAct = new ActionLoad(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
@@ -186,6 +194,13 @@ void ApplicationManager::setFillColor(bool _fillColor)
 	filled = _fillColor;
 }
 
+void ApplicationManager::DeleteAllFig()
+{
+	for (int i = 0; i < FigCount; ++i)
+		FigList[i] = NULL;
+	FigCount = 0;
+}
+
 bool ApplicationManager::getFillColor()
 {
 	return filled;
@@ -201,9 +216,16 @@ color ApplicationManager::stringToColor(string)
 	return color();
 }
 
-string ApplicationManager::colorToString(color)
+string ApplicationManager::colorToString(color c)
 {
-	return string();
+	std::ostringstream os;
+	os << int(c.ucRed) << "\t";
+	os << int(c.ucGreen) << "\t";
+	os << int(c.ucBlue);
+
+	std::string s = os.str();
+
+	return s;
 }
 
 //Destructor

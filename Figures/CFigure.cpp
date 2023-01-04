@@ -9,6 +9,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	area = 0.0f;
 	center = { 0, 0 };
 }
+CFigure::CFigure() {}
 
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
@@ -33,6 +34,8 @@ void CFigure::PrintInfo(GUI* pOut)
 void CFigure::Save(ofstream& File)
 {
 }
+void CFigure::Load(ifstream& File)
+{};
 
 color CFigure::convertStringtoColor(string colorName) const
 {

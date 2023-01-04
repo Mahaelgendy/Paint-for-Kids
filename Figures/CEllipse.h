@@ -10,11 +10,14 @@ private:
 	Point P2;
 public:
 		CEllipse(Point, Point, GfxInfo );
+		CEllipse();
 		virtual void DrawMe(GUI* pOut) const;
 		virtual bool IsInFig(int, int);
 		virtual void Resize(float);
 		virtual void PrintInfo(GUI* pOut);
 		virtual void Save(ofstream& File);
+		virtual void Load(ifstream& File);
+
 };
 
 #endif

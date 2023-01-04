@@ -96,6 +96,7 @@ ActionType GUI::MapInputToActionType() const
 			case ITIM_RESIZE: return RESIZE;
 			case ITM_DELETE:  return DEL;
 			case ITM_SAVE: return SAVE;
+			case ITM_LOAD: return LOAD;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -189,7 +190,8 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
-	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Sqr.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.JPG";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 
@@ -313,8 +315,6 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 
 	
 	pWind->DrawRectangle(P1.x, P1.y, P1.x +length, P1.y+length, style);
-	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
 }
 
 void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool selected) const

@@ -1,5 +1,6 @@
 #include "CTriangle.h"
 #include <fstream>
+#include <iostream>
 //constractor
 CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo) :CFigure(TriaGfxInfo)
 {
@@ -9,6 +10,8 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo) :CFigure
 	ID = 300 + newID++;
 	area = abs((Corner1.x * (Corner2.y - Corner3.y) + Corner2.x * (Corner3.y - Corner1.y) + Corner3.x * (Corner1.y - Corner2.y)) / 2.0);
 }
+CTriangle::CTriangle()
+{}
 void CTriangle::DrawMe(GUI* pGUI) const
 {
 	//Call Output::DrawRect to draw a Square on the screen	
@@ -82,14 +85,32 @@ bool CTriangle::IsInFig(int x, int y) {
 }
 void CTriangle::Save(ofstream& File)
 {
-	File << "Triangle\t" << ID << "\n" << Corner1.x << "\t"
+	File << "Triangle\t" << ID << "\t" << Corner1.x << "\t"
 		<< Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y
-		<< "\t" << Corner3.x << "\t" << Corner3.y
-		<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
-		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+		<< "\t" << Corner3.x << "\t" << Corner3.y << "\t"
+		<< convertColortoString(FigGfxInfo.DrawClr) << "\t";
 	if (this->FigGfxInfo.isFilled)
 		File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
 	else
 		File << "NON-FILLED\n";
 
+}
+void CTriangle::Load(ifstream& Infile)
+{
+	string temp;
+	Infile >> this->ID >> this->Corner1.x >> this->Corner1.y >> this->Corner2.x >> this->Corner2.y >> this->Corner3.x >> this->Corner3.y;
+	Infile >> temp;
+	this->FigGfxInfo.DrawClr = convertStringtoColor(temp);
+	Infile >> temp;
+	if (temp == "NON-FILLED") {
+		this->FigGfxInfo.isFilled = false;
+	}
+	else
+	{
+		this->FigGfxInfo.FillClr = convertStringtoColor(temp);
+		this->FigGfxInfo.isFilled = true;
+		cout << "fall";
+	}
+	this->Selected = false;
+	this->FigGfxInfo.BorderWdth = 3;
 }

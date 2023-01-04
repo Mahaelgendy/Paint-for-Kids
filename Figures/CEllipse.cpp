@@ -1,6 +1,7 @@
 #include "CEllipse.h"
 #include<string>
 #include<fstream> 
+#include <iostream>
 
 //constractor
 CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -9,6 +10,9 @@ CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureG
 	P2=_P2;
 	ID = 200 + newID++;
 	area = 3.1415f * P1.x * P2.x;
+}
+CEllipse::CEllipse()
+{
 }
 void CEllipse::DrawMe(GUI* pGUI) const
 {
@@ -49,11 +53,31 @@ bool CEllipse::IsInFig(int x, int y) {
 }
 void CEllipse::Save(ofstream& File)
 {
-	File << "Elipse \t" << ID << "\n" << P1.x << "\t" << P1.y << "\t" << P2.x << "\t" << P2.y
-		<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
-		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+	File << "Elipse \t" << ID << "\t" << P1.x << "\t" << P1.y << "\t" << P2.x << "\t" << P2.y << "\t"
+		<< convertColortoString(FigGfxInfo.DrawClr) << "\t";
 		if (this->FigGfxInfo.isFilled)
 			File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
 		else
 			File << "NON-FILLED\n";
+}
+void CEllipse::Load(ifstream& Infile)
+{
+	string temp;
+	Infile >> this->ID >> this->P1.x >> this->P1.y >> this->P2.x >> this->P2.y;
+	cout << "ID" << this->ID << "p1x" << this->P1.x << "p1y" << this->P1.y;
+	Infile >> temp;
+	this->FigGfxInfo.DrawClr = convertStringtoColor(temp);
+	Infile >> temp;
+	if (temp == "NON-FILLED") {
+		this->FigGfxInfo.isFilled = false;
+	}	
+	else
+	{
+		this->FigGfxInfo.FillClr = convertStringtoColor(temp);
+		this->FigGfxInfo.isFilled = true;
+		cout << "fall";
+	}
+	this->Selected = false;
+	this->FigGfxInfo.BorderWdth = 3;
+
 }

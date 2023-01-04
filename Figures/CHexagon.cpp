@@ -13,6 +13,9 @@ CHexagon::CHexagon(Point P1, int HorizentalLength, int VertivalLength, GfxInfo F
 	area = (6 * (VerticalLen * VerticalLen)) / (4.0 * tan((M_PI / 6)));
 		
 }
+CHexagon::CHexagon()
+{
+}
 	
 
 void CHexagon::DrawMe(GUI* pGUI) const
@@ -48,11 +51,28 @@ void CHexagon::PrintInfo(GUI* pOut)
 }
 void CHexagon::Save(ofstream& File)
 {
-	File << "Hexagon\t" << ID << "\n" << TopLeftCorner.x << "\t" << TopLeftCorner.y << "\t" << VerticalLen << "\t" << HorizentalLen << "\t"
-	<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
-		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+	File << "Hexagon\t" << ID << "\t" << TopLeftCorner.x << "\t" << TopLeftCorner.y << "\t" << VerticalLen << "\t" << HorizentalLen << "\t"
+	<< convertColortoString(FigGfxInfo.DrawClr) << "\t";
 	if (this->FigGfxInfo.isFilled)
 		File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
 	else
 		File << "NON-FILLED\n";
+}
+ void CHexagon::Load(ifstream& Infile)
+{
+	 string temp;
+	 Infile >> this->ID >> this->TopLeftCorner.x >> this->TopLeftCorner.y >> this->VerticalLen >> this->HorizentalLen ;
+	 Infile >> temp;
+	 this->FigGfxInfo.DrawClr = convertStringtoColor(temp);
+	 Infile >> temp;
+	 if (temp == "NON-FILLED") {
+		 this->FigGfxInfo.isFilled = false;
+	 }
+	 else
+	 {
+		 this->FigGfxInfo.FillClr = convertStringtoColor(temp);
+		 this->FigGfxInfo.isFilled = true;
+	 }
+	 this->Selected = false;
+	 this->FigGfxInfo.BorderWdth = 3;
 }

@@ -50,6 +50,7 @@ public:
 
 	bool getFillColor();
 	void setFillColor(bool);
+	void DeleteAllFig();
 	
 };
 #endif

@@ -14,6 +14,7 @@
 
 ActionSave::ActionSave(ApplicationManager* pApp, int _FigerCount) :Action(pApp)
 {
+	FigerCount = _FigerCount;
 }
 
 
@@ -45,7 +46,11 @@ void ActionSave::Execute()
 			flag = false;
 		}
 	}
+	File << pManager->colorToString(UI.DrawColor) << "\t";
+	File << pManager->colorToString(UI.FillColor) << "\t";
+	File << pManager->colorToString(UI.BkGrndColor) << "\t";
 	pGUI->ClearStatusBar();
+	File << FigerCount << "\n";
 	pManager->SaveFigData(File);
 	File.close(); 
 	pGUI->PrintMessage("Your data has been seved successfully...");

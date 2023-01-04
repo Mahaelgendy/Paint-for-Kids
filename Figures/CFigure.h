@@ -20,6 +20,7 @@ protected:
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
+	CFigure();
 	void SetSelected(bool );	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
 
@@ -43,6 +44,7 @@ public:
 
 	virtual void PrintInfo(GUI* pOut);	//print all figure info on the status bar
 	virtual void Save(ofstream& File);
+	virtual void Load(ifstream& File);
 	color convertStringtoColor(string) const;
 	string convertColortoString(color) const;
 
