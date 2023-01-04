@@ -175,12 +175,13 @@ const color PURPLE = color(160, 32, 240);
 const color MEDIUMPURPLE = color(147, 112, 219);
 const color THISTLE = color(216, 191, 216);
 const color DARKGREY = color(169, 169, 169);
-const color DARKGRAY = color(169, 169, 169);
+const color DARKGREY2 = color(64, 64, 64);
 const color DARKBLUE = color(0, 0, 139);
 const color DARKCYAN = color(0, 139, 139);
 const color DARKMAGENTA = color(139, 0, 139);
 const color DARKRED = color(139, 0, 0);
 const color LIGHTGREEN = color(144, 238, 144);
+const color MYDARKGRAY = color(140, 140, 140);
 
 
 #endif //COLOR_H
