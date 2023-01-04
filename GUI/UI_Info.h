@@ -33,6 +33,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITIM_RESIZE,
 	
 	//TODO: Add more items names here
+	ITM_SAVE,  //Save Item 
+	ITM_LOAD,
 	ITM_DELETE,
 	ITM_PLAY,
 	

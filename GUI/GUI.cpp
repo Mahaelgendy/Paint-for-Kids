@@ -1,4 +1,4 @@
-#include "GUI.h"
+ #include "GUI.h"
 #include <iostream>
 
 //constructor make necessary initializations
@@ -17,12 +17,12 @@ GUI::GUI()
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 80;
 	
-	UI.DrawColor = BLUE;	//Drawing color
+	UI.DrawColor = SNOW;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
-	UI.MsgColor = RED;		//Messages color
-	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
+	UI.MsgColor = DARKGREY2;		//Messages color
+	UI.BkGrndColor = POWDERBLUE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
-	UI.StatusBarColor = TURQUOISE;
+	UI.StatusBarColor = WHITE;
 	UI.PenWidth = 3;	//width of the figures frames
 
 	
@@ -96,6 +96,8 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;*/
 			case ITIM_RESIZE: return RESIZE;
 			case ITM_DELETE:  return DEL;
+			case ITM_SAVE: return SAVE;
+			case ITM_LOAD: return LOAD;
 			case ITM_PLAY: return TO_PLAY;
 			
 			case ITM_EXIT: return EXIT;	
@@ -241,6 +243,8 @@ void GUI::CreateDrawToolBar() const
 
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.JPG";
 	MenuItemImages[ITM_PLAY] = "images\\MenuItems\\play.jpg";
 	
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
@@ -256,7 +260,7 @@ void GUI::CreateDrawToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(GRAY, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
@@ -319,8 +323,8 @@ void GUI::CreateResizeToolBar() const
 void GUI::ClearToolBar() const
 {
 	//clear tool bar by drawing filled white square
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.ToolBarBkGrndColor);
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -417,8 +421,6 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 
 	
 	pWind->DrawRectangle(P1.x, P1.y, P1.x +length, P1.y+length, style);
-	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
 }
 
 void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool selected) const

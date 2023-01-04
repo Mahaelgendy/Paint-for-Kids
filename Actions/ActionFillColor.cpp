@@ -55,6 +55,8 @@ void ActionFillColor::Execute()
 	}
 
 
+
+
 	pGUI->ClearStatusBar();
 
 

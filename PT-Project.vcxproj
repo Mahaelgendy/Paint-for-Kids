@@ -138,7 +138,9 @@
     <ClCompile Include="Actions\ActionFillButton.cpp" />
     <ClCompile Include="Actions\ActionFillColor.cpp" />
     <ClCompile Include="Actions\ActionDelete.cpp" />
+    <ClCompile Include="Actions\ActionLoad.cpp" />
     <ClCompile Include="Actions\ActionResize.cpp" />
+    <ClCompile Include="Actions\ActionSave.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="Actions\ActionSwitchToDrawMode.cpp" />
     <ClCompile Include="Actions\ActionSwitchToPlay.cpp" />
@@ -198,7 +200,9 @@
     <ClInclude Include="Actions\ActionFillButton.h" />
     <ClInclude Include="Actions\ActionFillColor.h" />
     <ClInclude Include="Actions\ActionDelete.h" />
+    <ClInclude Include="Actions\ActionLoad.h" />
     <ClInclude Include="Actions\ActionResize.h" />
+    <ClInclude Include="Actions\ActionSave.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="Actions\ActionSwitchToDrawMode.h" />
     <ClInclude Include="Actions\ActionSwitchToPlay.h" />
