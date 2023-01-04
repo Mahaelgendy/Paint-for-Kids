@@ -39,12 +39,18 @@ public:
 	CFigure* GetSelectedFigure() const;
 	CFigure* GetNotSelectedFigure() const;
 	CFigure* DrawnFigs(int i) const;
+
 	int* getFigCount();
 	CFigure** getFigList();
 	int getSelectedFigure();
+
 	void SaveFigData(ofstream &File);
+
 	color stringToColor(string);
 	string colorToString(color);
+
+	void BringToFront( int selectedIndex);
+	void SendToBack( int selectedIndex);
 
 	// -- Interface Management Functions	
 	GUI* GetGUI() const; //Return pointer to the interface

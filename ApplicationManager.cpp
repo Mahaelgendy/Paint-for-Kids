@@ -12,6 +12,8 @@
 #include "Actions\ActionSwitchToDrawMode.h"
 #include "Actions\ActionSave.h"
 #include "Actions\ActionLoad.h"
+#include "Actions\ActionBringFront.h"
+#include "Actions\ActionSendBack.h"
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -97,6 +99,12 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case RESIZE :
 			newAct = new ActionResize(this,SelectedFig);
+			break;
+		case BRNG_FRNT:
+			newAct = new ActionBringFront(this);
+			break;
+		case SEND_BACK:
+			newAct = new ActionSendBack(this);
 			break;
 		case GO_BACK:
 			newAct = new ActionSwitchToDrawMode(this);
@@ -254,6 +262,31 @@ string ApplicationManager::colorToString(color c)
 	return s;
 }
 
+
+void ApplicationManager::BringToFront(int selectedIndex)
+{
+	if (selectedIndex != FigCount - 1)
+	{
+		for (int i = selectedIndex; i < FigCount - 1; i++) 
+		{
+			CFigure* temp = FigList[i];
+			FigList[i] = FigList[i + 1];
+			FigList[i + 1] = temp;
+		}
+	}
+}
+void ApplicationManager::SendToBack(int selectedIndex)
+{
+	if (selectedIndex != FigCount - 1)
+	{
+		for (int i = selectedIndex; i >0 ; i--)
+		{
+			CFigure* temp = FigList[i];
+			FigList[i] = FigList[i - 1];
+			FigList[i - 1] = temp;
+		}
+	}
+}
 //Destructor
 ApplicationManager::~ApplicationManager()
 {

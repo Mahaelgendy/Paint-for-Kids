@@ -27,6 +27,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_FILL_COLOR, //Fill Color item in menue
 	ITM_FILL_BUTTON,
 	ITIM_RESIZE,
+	ITM_TO_FRONT,
+	ITM_TO_BACK,
 	//TODO: Add more items names here
 	ITM_SAVE,  //Save Item 
 	ITM_LOAD,

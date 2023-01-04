@@ -94,8 +94,10 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_FILL_COLOR: return CHNG_FILL_CLR;
 			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;
 			case ITIM_RESIZE: return RESIZE;
-			case ITM_DELETE:  return DEL;
+			case ITM_TO_FRONT: return BRNG_FRNT;
+			case ITM_TO_BACK: return SEND_BACK;
 			case ITM_SAVE: return SAVE;
+			case ITM_DELETE:  return DEL;
 			case ITM_LOAD: return LOAD;
 			case ITM_PLAY: return TO_PLAY;
 			case ITM_EXIT: return EXIT;	
@@ -213,6 +215,8 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
 	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
+	MenuItemImages[ITM_TO_FRONT] = "images\\MenuItems\\bringfront.jpg";
+	MenuItemImages[ITM_TO_BACK] = "images\\MenuItems\\sendback.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.JPG";
