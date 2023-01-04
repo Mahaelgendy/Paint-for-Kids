@@ -1,4 +1,4 @@
-#include "GUI.h"
+ #include "GUI.h"
 #include <iostream>
 
 //constructor make necessary initializations
@@ -95,6 +95,8 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;
 			case ITIM_RESIZE: return RESIZE;
 			case ITM_DELETE:  return DEL;
+			case ITM_SAVE: return SAVE;
+			case ITM_LOAD: return LOAD;
 			case ITM_PLAY: return TO_PLAY;
 			case ITM_EXIT: return EXIT;	
 			
@@ -210,9 +212,10 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_DRAW_COLOR] = "images\\MenuItems\\Color1.jpg";
 	MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
 	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";
-
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.JPG";
 	MenuItemImages[ITM_PLAY] = "images\\MenuItems\\play.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
@@ -356,8 +359,6 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 
 	
 	pWind->DrawRectangle(P1.x, P1.y, P1.x +length, P1.y+length, style);
-	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
 }
 
 void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool selected) const

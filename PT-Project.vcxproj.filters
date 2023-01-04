@@ -181,6 +181,12 @@
     <ClCompile Include="Actions\ActionSwitchToDrawMode.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionSave.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionLoad.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\ActionSwitchToPlay.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -308,12 +314,6 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionSwitchToDrawMode.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionSwitchToPlay.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\PickByType.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

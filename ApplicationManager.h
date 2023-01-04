@@ -42,7 +42,9 @@ public:
 	int* getFigCount();
 	CFigure** getFigList();
 	int getSelectedFigure();
-
+	void SaveFigData(ofstream &File);
+	color stringToColor(string);
+	string colorToString(color);
 
 	// -- Interface Management Functions	
 	GUI* GetGUI() const; //Return pointer to the interface
@@ -50,6 +52,7 @@ public:
 
 	bool getFillColor();
 	void setFillColor(bool);
+	void DeleteAllFig();
 	
 };
 #endif

@@ -10,6 +10,13 @@
 #include "Actions\ActionDelete.h"
 #include "Actions\ActionResize.h"
 #include "Actions\ActionSwitchToDrawMode.h"
+#include "Actions\ActionSave.h"
+#include "Actions\ActionLoad.h"
+#include <string>
+#include <string.h>
+#include <iostream>
+#include<sstream> 
+
 #include "Actions\ActionSwitchToPlay.h"
 #include "Actions\PickByType.h"
 
@@ -97,6 +104,13 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DEL:
 			newAct = new ActionDelete(this);
 			break;
+		case SAVE:
+			newAct = new ActionSave(this, FigCount);
+			break;
+		case LOAD:
+			newAct = new ActionLoad(this);
+			break;
+
 		case TO_PLAY:
 			newAct = new ActionSwitchToPlay(this);
 			break;
@@ -206,11 +220,39 @@ void ApplicationManager::setFillColor(bool _fillColor)
 	filled = _fillColor;
 }
 
+void ApplicationManager::DeleteAllFig()
+{
+	for (int i = 0; i < FigCount; ++i)
+		FigList[i] = NULL;
+	FigCount = 0;
+}
+
 bool ApplicationManager::getFillColor()
 {
 	return filled;
 }
 
+void ApplicationManager::SaveFigData(ofstream& File) {
+	for (int i = 0; i < FigCount; ++i)
+		FigList[i]->Save(File);
+}
+
+color ApplicationManager::stringToColor(string)
+{
+	return color();
+}
+
+string ApplicationManager::colorToString(color c)
+{
+	std::ostringstream os;
+	os << int(c.ucRed) << "\t";
+	os << int(c.ucGreen) << "\t";
+	os << int(c.ucBlue);
+
+	std::string s = os.str();
+
+	return s;
+}
 
 //Destructor
 ApplicationManager::~ApplicationManager()
