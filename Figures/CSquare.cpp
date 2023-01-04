@@ -1,4 +1,5 @@
 #include "CSquare.h"
+#include <fstream>
 
 CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -36,4 +37,14 @@ void CSquare::PrintInfo(GUI* pOut)
 			) +
 			" =>Height: " + std::to_string(abs((TopLeftCorner.y - (TopLeftCorner.y + length)))) +
 			" =>Area: " + std::to_string(int(area)));
+}
+void CSquare::Save(ofstream& File)
+{
+	File << "Square\n" << ID << "\t" << TopLeftCorner.x << "\t" << TopLeftCorner.y << "\t" << length 
+		<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
+		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
+	else
+		File << "NON-FILLED\n";
 }

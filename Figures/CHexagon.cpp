@@ -1,5 +1,6 @@
 #include "CHexagon.h"
 #include <math.h>
+#include<fstream>
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -44,4 +45,14 @@ void CHexagon::PrintInfo(GUI* pOut)
 		" =>Height: " + std::to_string(VerticalLen) +
 		" =>Area: " + std::to_string(int(area))
 		);
+}
+void CHexagon::Save(ofstream& File)
+{
+	File << "Hexagon\t" << ID << "\n" << TopLeftCorner.x << "\t" << TopLeftCorner.y << "\t" << VerticalLen << "\t" << HorizentalLen << "\t"
+	<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
+		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
+	else
+		File << "NON-FILLED\n";
 }

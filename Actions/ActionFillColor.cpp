@@ -27,7 +27,6 @@ void ActionFillColor::Execute()
 	newFillColor = pGUI->pWind->GetColor(P1.x, P1.y);
 	pGUI->setCrntFillColor(newFillColor);
 	
-	
 
 
 	pGUI->ClearStatusBar();

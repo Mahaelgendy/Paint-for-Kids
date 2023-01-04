@@ -15,6 +15,8 @@ public:
 	virtual bool IsInFig(int, int);
 	virtual void Resize(float);
 	virtual void PrintInfo(GUI* pOut);
+	virtual void Save(ofstream& File);
+
 };
 
 #endif

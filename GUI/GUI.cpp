@@ -1,4 +1,4 @@
-#include "GUI.h"
+ #include "GUI.h"
 #include <iostream>
 
 //constructor make necessary initializations
@@ -95,6 +95,7 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;
 			case ITIM_RESIZE: return RESIZE;
 			case ITM_DELETE:  return DEL;
+			case ITM_SAVE: return SAVE;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -186,9 +187,9 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_DRAW_COLOR] = "images\\MenuItems\\Color1.jpg";
 	MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
 	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";
-
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Sqr.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 

@@ -10,6 +10,8 @@
 #include "Actions\ActionDelete.h"
 #include "Actions\ActionResize.h"
 #include "Actions\ActionSwitchToDrawMode.h"
+#include "Actions\ActionSave.h"
+
 
 
 
@@ -94,6 +96,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case DEL:
 			newAct = new ActionDelete(this);
+			break;
+		case SAVE:
+			newAct = new ActionSave(this, FigCount);
 			break;
 
 		case EXIT:
@@ -186,6 +191,20 @@ bool ApplicationManager::getFillColor()
 	return filled;
 }
 
+void ApplicationManager::SaveFigData(ofstream& File) {
+	for (int i = 0; i < FigCount; ++i)
+		FigList[i]->Save(File);
+}
+
+color ApplicationManager::stringToColor(string)
+{
+	return color();
+}
+
+string ApplicationManager::colorToString(color)
+{
+	return string();
+}
 
 //Destructor
 ApplicationManager::~ApplicationManager()

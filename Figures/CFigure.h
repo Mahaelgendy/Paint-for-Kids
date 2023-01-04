@@ -42,6 +42,10 @@ public:
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
 	virtual void PrintInfo(GUI* pOut);	//print all figure info on the status bar
+	virtual void Save(ofstream& File);
+	color convertStringtoColor(string) const;
+	string convertColortoString(color) const;
+
 };
 
 #endif

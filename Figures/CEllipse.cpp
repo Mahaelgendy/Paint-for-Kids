@@ -1,5 +1,6 @@
 #include "CEllipse.h"
 #include<string>
+#include<fstream> 
 
 //constractor
 CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -33,6 +34,7 @@ void CEllipse::PrintInfo(GUI* pOut)
 		" =>center: ( " + std::to_string(center.x) +
 		", " + to_string(center.y) + " )");
 }
+
 bool CEllipse::IsInFig(int x, int y) {
     Point center;
     center.x = 0.5 * (P2.x + P1.x);
@@ -44,4 +46,14 @@ bool CEllipse::IsInFig(int x, int y) {
         return true;
 
     return false;
+}
+void CEllipse::Save(ofstream& File)
+{
+	File << "Elipse \t" << ID << "\n" << P1.x << "\t" << P1.y << "\t" << P2.x << "\t" << P2.y
+		<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
+		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+		if (this->FigGfxInfo.isFilled)
+			File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
+		else
+			File << "NON-FILLED\n";
 }

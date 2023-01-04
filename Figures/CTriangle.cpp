@@ -1,5 +1,5 @@
 #include "CTriangle.h"
-
+#include <fstream>
 //constractor
 CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo) :CFigure(TriaGfxInfo)
 {
@@ -79,4 +79,17 @@ bool CTriangle::IsInFig(int x, int y) {
 		return true;
 	}
 	return false;
+}
+void CTriangle::Save(ofstream& File)
+{
+	File << "Triangle\t" << ID << "\n" << Corner1.x << "\t"
+		<< Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y
+		<< "\t" << Corner3.x << "\t" << Corner3.y
+		<< convertColortoString(FigGfxInfo.DrawClr) << "\t"
+		<< convertColortoString(FigGfxInfo.FillClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		File << this->convertColortoString(this->FigGfxInfo.FillClr) << "\n";
+	else
+		File << "NON-FILLED\n";
+
 }
