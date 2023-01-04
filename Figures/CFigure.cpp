@@ -16,7 +16,6 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	area = 0.0f;
 	center = { 0, 0 };
 }
-CFigure::CFigure() {}
 
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
