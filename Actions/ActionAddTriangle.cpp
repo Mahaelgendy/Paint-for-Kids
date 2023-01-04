@@ -27,7 +27,7 @@ void ActionAddTriangle::Execute()
 
 	//Step 1 - Read Square data from the user
 
-	pGUI->PrintMessage("New Square: Click at first point");	
+	pGUI->PrintMessage("New Triangle: Click at first point");	
 	//Read 1st point and store in point P1
 	pGUI->GetPointClicked(P1.x, P1.y);
 	if (P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight)
@@ -42,7 +42,7 @@ void ActionAddTriangle::Execute()
 		}
 	}
 
-	pGUI->PrintMessage("New Square: Click at second point");
+	pGUI->PrintMessage("New Triangle: Click at second point");
 	//Read 2nd point and store in point P2
 	pGUI->GetPointClicked(P2.x, P2.y);
 	if (P2.y < UI.StatusBarHeight || P2.y > UI.height - UI.StatusBarHeight)
@@ -57,7 +57,7 @@ void ActionAddTriangle::Execute()
 		}
 	}
 
-	pGUI->PrintMessage("New Square: Click at third point");
+	pGUI->PrintMessage("New Triangle: Click at third point");
 	//Read 2nd point and store in point P2
 	pGUI->GetPointClicked(P3.x, P3.y);
 	if (P3.y < UI.StatusBarHeight || P3.y > UI.height - UI.StatusBarHeight)

@@ -21,7 +21,7 @@ void CTriangle::DrawMe(GUI* pGUI) const
 void CTriangle::Resize(float size)
 {
 	if (size == 0.5) size = -1;
-	else if(size == 0.24) size = -(4.0 / 3);
+	else if(size == 0.25) size = -(4.0 / 3);
 
 	Point O;
 	O.x = (Corner1.x + Corner2.x + Corner3.x) / 3;

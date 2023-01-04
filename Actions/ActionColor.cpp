@@ -23,9 +23,19 @@ void ActionColor::Execute()
 	//Read 1st point and store in point P1
 	pGUI->GetPointClicked(P1.x, P1.y);
 	newColor = pGUI->pWind->GetColor(P1.x, P1.y);
-	pGUI->setCrntDrawColor(newColor);
 	
 	
+	CFigure* fig = pManager->GetSelectedFigure();
+	if (fig != NULL && fig->IsSelected())
+	{
+		fig->ChngDrawClr(newColor);
+		fig->SetSelected(false);
+
+	}
+	else
+	{
+		pGUI->setCrntDrawColor(newColor);
+	}
 	
 
 	pGUI->ClearStatusBar();

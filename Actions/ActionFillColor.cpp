@@ -25,8 +25,36 @@ void ActionFillColor::Execute()
 	pGUI->GetPointClicked(P1.x, P1.y);
 
 	newFillColor = pGUI->pWind->GetColor(P1.x, P1.y);
-	pGUI->setCrntFillColor(newFillColor);
 	
+	
+	
+	
+	CFigure* figSelected = pManager->GetSelectedFigure();
+	CFigure* figNotSelected = pManager->GetNotSelectedFigure();
+	bool fillColor = pManager->getFillColor();
+	/*if (fig == NULL || fig->IsSelected())
+	{
+	pGUI->setBackgroundColor(newFillColor);
+	pGUI->ClearDrawArea();
+	}*/
+	if (figSelected != NULL)
+	{
+		figSelected->ChngFillClr(newFillColor);
+		figSelected->SetSelected(false);
+	}
+	else
+	{
+		
+		if (fillColor == false)
+		{
+			pGUI->setBackgroundColor(newFillColor);
+			pGUI->ClearDrawArea();
+		}
+		else
+			pGUI->setCrntFillColor(newFillColor);
+	}
+
+
 
 
 	pGUI->ClearStatusBar();

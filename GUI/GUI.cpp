@@ -97,6 +97,7 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_DELETE:  return DEL;
 			case ITM_SAVE: return SAVE;
 			case ITM_LOAD: return LOAD;
+			case ITM_PLAY: return TO_PLAY;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -134,11 +135,34 @@ ActionType GUI::MapInputToActionType() const
 	}
 	else	//GUI is in PLAY mode
 	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the correspoding action
-		return TO_PLAY;	//just for now. This should be updated
-	}	
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+			switch (ClickedItemOrder)
+			{
+			case ITM_SHAPE: return PLAY_SHAPES;
+			case ITM_COLOR: return PLAY_COLORS;
+			case ITM_SHAPE_COLOR: return PLAY_SHAPES_COLORS;
+			case ITM_DRAW_BACK: return GO_BACK;
+
+			default: return EMPTY;	//A click on empty place in desgin toolbar
+			}
+		}
+
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return DRAWING_AREA;
+		}
+
+
+
+
+		return STATUS;	//just for now. This should be updated
+	}
 
 }
 //======================================================================================//
@@ -192,6 +216,7 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.JPG";
+	MenuItemImages[ITM_PLAY] = "images\\MenuItems\\play.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 
@@ -246,6 +271,21 @@ void GUI::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
+	string MenuItemImages[PLAY_ITM_COUNT];
+	MenuItemImages[ITM_SHAPE] = "images\\MenuItems\\shapesss.jpg";
+	MenuItemImages[ITM_COLOR] = "images\\MenuItems\\colorss.jpg";
+	MenuItemImages[ITM_SHAPE_COLOR] = "images\\MenuItems\\shapes_colors.jpg";
+	MenuItemImages[ITM_DRAW_BACK] = "images\\MenuItems\\back.jpg";
+
+
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(CORNFLOWERBLUE, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -277,6 +317,10 @@ void GUI::setCrntFillColor(color _fillColor) const
 {
 	UI.FillColor = _fillColor;
 	
+}
+void GUI::setBackgroundColor(color _backgroundColor) const
+{
+	UI.BkGrndColor = _backgroundColor;
 }
 
 color GUI::getCrntDrawColor() const	//get current drwawing color
@@ -386,7 +430,7 @@ void GUI::DrawHexagon(Point TopLeft, int Horizentallength, int Vertivallength, G
 	int hX[6] = { px1,px2,px3,px4,px5,px6 };
 	int hY[6] = { py1,py2,py3,py4,py5,py6 };
 
-	pWind->DrawPolygon(hX, hY, 6);
+	pWind->DrawPolygon(hX, hY, 6, style);
 }
 
 

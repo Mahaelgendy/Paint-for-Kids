@@ -17,6 +17,8 @@
 #include <iostream>
 #include<sstream> 
 
+#include "Actions\ActionSwitchToPlay.h"
+#include "Actions\PickByType.h"
 
 
 
@@ -109,6 +111,12 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new ActionLoad(this);
 			break;
 
+		case TO_PLAY:
+			newAct = new ActionSwitchToPlay(this);
+			break;
+		case PLAY_SHAPES:
+			newAct = new PickByType(this);
+			break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -152,11 +160,17 @@ CFigure** ApplicationManager::getFigList() {
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	for (int i = FigCount - 1; i >= 0; i--)
-		if (FigList[i]->IsInFig(x, y))
-		{
-			return FigList[i];
+		if (FigList[i]->HiddenStatus() == false) {
+			if (FigList[i]->IsInFig(x, y))
+			{
+				return FigList[i];
+			}
 		}
 	return NULL;
+}
+CFigure* ApplicationManager::DrawnFigs(int i) const
+{
+	return FigList[i];
 }
 int ApplicationManager::getSelectedFigure()
 {
@@ -174,6 +188,14 @@ CFigure* ApplicationManager::GetSelectedFigure() const
 	}
 	return NULL;
 }
+CFigure* ApplicationManager::GetNotSelectedFigure() const
+{
+	//check if a figure selected
+	for (int i = (FigCount - 1); i >= 0; i--) {
+		if (!FigList[i]->IsSelected()) return FigList[i];
+	}
+	return NULL;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -181,8 +203,12 @@ CFigure* ApplicationManager::GetSelectedFigure() const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->DrawMe(pGUI);		//Call Draw function (virtual member fn)
+	pGUI->ClearDrawArea();
+	for (int i = 0; i < FigCount; i++)
+	{
+		if(FigList[i]->HiddenStatus() == false)
+			FigList[i]->DrawMe(pGUI);		//Call Draw function (virtual member fn)
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the interface
