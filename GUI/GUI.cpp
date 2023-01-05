@@ -134,10 +134,10 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_BUTTON: return SELECT_FILL_COLOR;
 			case ITM_BLACK:return _BLACK;
 			case ITM_WHITE:return _WHITE;
-			case ITM_MLSJYROSE:return _MLSJYROSE;
-			case ITM_LAVENDERBLUSH:return _LAVENDERBLUSH;
-			case ITM_LAVENDER:return _LAVENDER;
-			case ITM_ALJCEBLU:return _ALJCEBLU;
+			case ITM_RED:return _RED;
+			case ITM_BLUE:return _BLUE;
+			case ITM_GREEN:return _GREEN;
+			case ITM_YELLOW:return _YELLOW;
 			case ITM_BACK4:  return GO_BACK;
 			}
 		}
@@ -279,10 +279,10 @@ void GUI::CreateColorToolBar() const
 	MenuItemImages[ITM_BUTTON] = "images\\MenuItems\\switch.jpg";
 	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\black.jpg";
 	MenuItemImages[ITM_WHITE] = "images\\MenuItems\\white.jpg";
-	MenuItemImages[ITM_MLSJYROSE] = "images\\MenuItems\\MLSJYROSE.jpg";
-	MenuItemImages[ITM_LAVENDERBLUSH] = "images\\MenuItems\\LAVENDERBLUSH.jpg";
-	MenuItemImages[ITM_LAVENDER] = "images\\MenuItems\\LAVENDER.jpg";
-	MenuItemImages[ITM_ALJCEBLU] = "images\\MenuItems\\ALJCEBLU.jpg";
+	MenuItemImages[ITM_RED] = "images\\MenuItems\\red.jpg";
+	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\blue.jpg";
+	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\green.jpg";
+	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\yellow.jpg";
 	MenuItemImages[ITM_BACK4] = "images\\MenuItems\\back.jpg";
 
 

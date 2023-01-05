@@ -47,10 +47,10 @@ enum ActionType //The actions supported (you can add more if needed)
 	PLAY_SHAPES_COLORS,
 	_BLACK,
 	_WHITE,
-	_MLSJYROSE,
-	_LAVENDERBLUSH,
-	_LAVENDER,
-	_ALJCEBLU,
+	_RED,
+	_BLUE,
+	_GREEN,
+	_YELLOW,
 };
 
 struct Point	//To be used for figures points
