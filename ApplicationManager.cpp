@@ -4,6 +4,7 @@
 #include "Actions\ActionAddEllipse.h"
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionSelect.h"
+#include "Actions\ActionColorMenu.h"
 #include "Actions\ActionColor.h"
 #include "Actions\ActionFillColor.h"
 #include "Actions\ActionFillButton.h"
@@ -88,6 +89,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case SELECT:
 			newAct = new ActionSelect(this);
 			break;
+		case TO_COLOR:
+			newAct = new ActionColorMenu(this);
+			break;
 		case CHNG_DRAW_CLR:
 			newAct = new ActionColor(this);
 			break;
@@ -125,6 +129,7 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case PLAY_SHAPES:
 			newAct = new PickByType(this);
 			break;
+		
 		case EXIT:
 			///create ExitAction here
 			
