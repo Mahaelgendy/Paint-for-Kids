@@ -291,15 +291,11 @@ void ApplicationManager::BringToFront(int selectedIndex)
 }
 void ApplicationManager::SendToBack(int selectedIndex)
 {
-	if (selectedIndex != FigCount - 1)
-	{
-		for (int i = selectedIndex; i >0 ; i--)
-		{
-			CFigure* temp = FigList[i];
-			FigList[i] = FigList[i - 1];
-			FigList[i - 1] = temp;
-		}
-	}
+	CFigure* SelectedFigure = FigList[selectedIndex];
+	for (int i = selectedIndex; i > 0; i--)
+		FigList[i] = FigList[i - 1];
+
+	FigList[0] = SelectedFigure;
 }
 //Destructor
 ApplicationManager::~ApplicationManager()
