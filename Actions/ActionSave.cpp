@@ -1,6 +1,5 @@
 #include "ActionSave.h"
 #include"..\Figures\CFigure.h"
-
 #include "..\ApplicationManager.h"
 
 #include "..\GUI\GUI.h"
@@ -15,6 +14,10 @@
 ActionSave::ActionSave(ApplicationManager* pApp, int _FigerCount) :Action(pApp)
 {
 	FigerCount = _FigerCount;
+}
+ActionSave::ActionSave(ApplicationManager* pApp) :Action(pApp)
+{
+	
 }
 
 

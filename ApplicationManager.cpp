@@ -16,6 +16,7 @@
 #include "Actions\ActionBringFront.h"
 #include "Actions\ActionSendBack.h"
 #include "Actions\ActionPickByColor.h"
+#include "Actions\ActionExit.h"
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -140,7 +141,7 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		
 		case EXIT:
 			///create ExitAction here
-			
+			newAct = new ActionExit(this);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
