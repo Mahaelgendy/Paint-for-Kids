@@ -199,6 +199,10 @@
     <ClCompile Include="Actions\ActionSendBack.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionColorMenu.cpp" />
+    <ClCompile Include="Actions\ActionPickByColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -338,6 +342,10 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionSendBack.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionColorMenu.h" />
+    <ClInclude Include="Actions\ActionPickByColor.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

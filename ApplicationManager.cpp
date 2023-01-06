@@ -15,6 +15,7 @@
 #include "Actions\ActionLoad.h"
 #include "Actions\ActionBringFront.h"
 #include "Actions\ActionSendBack.h"
+#include "Actions\ActionPickByColor.h"
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -129,6 +130,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case PLAY_SHAPES:
 			newAct = new PickByType(this);
 			break;
+		case PLAY_COLORS:
+			newAct = new ActionPickByColor(this);
+			break;
 		
 		case EXIT:
 			///create ExitAction here
@@ -199,6 +203,7 @@ CFigure* ApplicationManager::GetSelectedFigure() const
 	for (int i = (FigCount - 1); i >= 0; i--) {
 		if (FigList[i]->IsSelected()) return FigList[i];
 	}
+
 	return NULL;
 }
 CFigure* ApplicationManager::GetNotSelectedFigure() const

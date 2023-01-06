@@ -30,6 +30,7 @@ public:
 	void Show();
 	bool HiddenStatus() const;
 
+	GfxInfo GetGfxInfo()const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	virtual bool IsInFig(int, int) = 0;//Take a point -->Return True if the point in figer area  or  Flase if is not 

@@ -58,6 +58,10 @@ void CFigure::Save(ofstream& File)
 void CFigure::Load(ifstream& File)
 {};
 
+GfxInfo CFigure::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
 color CFigure::convertStringtoColor(string colorName) const
 {
 	if (colorName == "BLUE")  return BLUE;

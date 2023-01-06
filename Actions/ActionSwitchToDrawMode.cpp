@@ -14,5 +14,4 @@ void ActionSwitchToDrawMode::Execute()
 
 	pGUI->PrintMessage("Back to Draw mode");
 	UI.InterfaceMode = MODE_DRAW;
-
 }
