@@ -17,14 +17,13 @@ void ActionColor::Execute()
 	//Get a Pointer to the Interface
 	GUI* pGUI = pManager->GetGUI();
 	
-	//Step 1 - Read Square data from the user
-	//pGUI->PrintMessage("You Pick Color");
+	//Read 1st point to pick border color
 	pGUI->PrintMessage("Pick Color: Click at Color");
-	//Read 1st point and store in point P1
+	//Get 1st point and store it in color
 	pGUI->GetPointClicked(P1.x, P1.y);
 	newColor = pGUI->pWind->GetColor(P1.x, P1.y);
 	
-	
+	//check if there is a figure selected to change border color
 	CFigure* fig = pManager->GetSelectedFigure();
 	if (fig != NULL && fig->IsSelected())
 	{
@@ -32,6 +31,7 @@ void ActionColor::Execute()
 		fig->SetSelected(false);
 
 	}
+	//case there is not any figure selected to change border color
 	else
 	{
 		pGUI->setCrntDrawColor(newColor);

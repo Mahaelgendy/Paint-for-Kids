@@ -108,16 +108,16 @@ void PickByTypeAndColor::ReadActionParameters()
 			else
 			{
 
-				if (Fig->GetGfxInfo().DrawClr == BLACK)
+				if (Fig->GetGfxInfo().FillClr == BLACK)
 					combinations[18]++;
 
-				else if (Fig->GetGfxInfo().DrawClr == WHITE)
+				else if (Fig->GetGfxInfo().FillClr == WHITE)
 					combinations[19]++;
 
-				else if (Fig->GetGfxInfo().DrawClr == BLUE)
+				else if (Fig->GetGfxInfo().FillClr == BLUE)
 					combinations[20]++;
 
-				else if (Fig->GetGfxInfo().DrawClr == GREEN)
+				else if (Fig->GetGfxInfo().FillClr == GREEN)
 					combinations[21]++;
 
 				else
@@ -245,7 +245,7 @@ void PickByTypeAndColor::Execute()
 				if (dynamic_cast<CEllipse*>(Fig))
 				{
 					pickedFigNumber = combinations[12];
-					pGui->PrintMessage("Pick up all the red hexagons!");
+					pGui->PrintMessage("Pick up all the red ellipse!");
 
 				}
 				else if (dynamic_cast<CTriangle*>(Fig))
@@ -257,7 +257,7 @@ void PickByTypeAndColor::Execute()
 				else
 				{
 					pickedFigNumber = combinations[14];
-					pGui->PrintMessage("Pick up all the red circles!");
+					pGui->PrintMessage("Pick up all the red hexagon!");
 
 				}
 
@@ -285,23 +285,23 @@ void PickByTypeAndColor::Execute()
 			}
 			else
 			{
-				if (Fig->GetGfxInfo().DrawClr == BLACK)
+				if (Fig->GetGfxInfo().FillClr == BLACK)
 				{
 					pickedFigNumber = combinations[18];
 					pGui->PrintMessage("Pick up black squares!");
 				}
-				else if (Fig->GetGfxInfo().DrawClr == WHITE)
+				else if (Fig->GetGfxInfo().FillClr == WHITE)
 				{
 					pickedFigNumber = combinations[19];
 					pGui->PrintMessage("Pick up black white squares!");
 				}
-				else if (Fig->GetGfxInfo().DrawClr == BLUE)
+				else if (Fig->GetGfxInfo().FillClr == BLUE)
 				{
 					pickedFigNumber = combinations[20];
 					pGui->PrintMessage("Pick up blue squares!");
 
 				}
-				else if (Fig->GetGfxInfo().DrawClr == GREEN)
+				else if (Fig->GetGfxInfo().FillClr == GREEN)
 				{
 					pickedFigNumber = combinations[21];
 					pGui->PrintMessage("Pick up green squares!");
@@ -327,7 +327,7 @@ void PickByTypeAndColor::Execute()
 				if (clickedFig != NULL)
 				{
 
-					if (dynamic_cast<CSquare*>(Fig) && dynamic_cast<CSquare*>(clickedFig) && (clickedFig->GetGfxInfo().DrawClr == Fig->GetGfxInfo().DrawClr))
+					if (dynamic_cast<CSquare*>(Fig) && dynamic_cast<CSquare*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrintScore(1);
 						clickedFig->Hide();
@@ -375,7 +375,7 @@ void PickByTypeAndColor::Execute()
 			PrintScore(3);
 
 	}
-	else pGui->PrintMessage("You must have at least two or more combinations to play pick by both!");
+	else pGui->PrintMessage("You must have at least two or more combinations to play pick by type and color!");
 	for (int i = 0; i < *pManager->getFigCount();i++)
 		pManager->DrawnFigs(i)->Show();
 	pManager->UpdateInterface();

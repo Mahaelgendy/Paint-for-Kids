@@ -20,36 +20,34 @@ void ActionFillColor::Execute()
 	
 
 	
-	//Step 1 - Read Square data from the user
+	//Read 1st point to pick fill color
 	pGUI->PrintMessage("Pick Fill Color: Click at Color");
+	//Get 1st point and store it in color
 	pGUI->GetPointClicked(P1.x, P1.y);
-
 	newFillColor = pGUI->pWind->GetColor(P1.x, P1.y);
-	
-	
 	
 	
 	CFigure* figSelected = pManager->GetSelectedFigure();
 	CFigure* figNotSelected = pManager->GetNotSelectedFigure();
 	bool fillColor = pManager->getFillColor();
-	/*if (fig == NULL || fig->IsSelected())
-	{
-	pGUI->setBackgroundColor(newFillColor);
-	pGUI->ClearDrawArea();
-	}*/
+	
+
+	//check if there is a figure selected to change fill color
 	if (figSelected != NULL)
 	{
 		figSelected->ChngFillClr(newFillColor);
 		figSelected->SetSelected(false);
 	}
+	//case there is not a figure selected
 	else
 	{
-		
+		//case change background color
 		if (fillColor == false)
 		{
 			pGUI->setBackgroundColor(newFillColor);
 			pGUI->ClearDrawArea();
 		}
+		//case change fill color for new figure
 		else
 			pGUI->setCrntFillColor(newFillColor);
 	}
