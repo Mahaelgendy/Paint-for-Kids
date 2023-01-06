@@ -13,16 +13,13 @@ void ActionFillButton::Execute()
 {
 	//Get a Pointer to the Interface
 	GUI* pGUI = pManager->GetGUI();
-
-
-
-	//message switch for  fill color
-	pGUI->PrintMessage("Click Button: To active switch Fill Color between background and fill figure (default background)");
+	
 	//Active switch for  fill color
 	pManager->setFillColor(!pManager->getFillColor());
 
-
 	pGUI->ClearStatusBar();
+	//message switch for  fill color
+	pGUI->PrintMessage("Pick Fill Button Icon: Switch between Fill figure Color and background color (default background)");
 
 
 

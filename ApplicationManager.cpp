@@ -239,6 +239,7 @@ GUI *ApplicationManager::GetGUI() const
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::setFillColor(bool _fillColor)
 {
+
 	filled = _fillColor;
 }
 

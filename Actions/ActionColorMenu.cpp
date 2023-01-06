@@ -10,9 +10,11 @@ void ActionColorMenu::Execute()
 {
 	
 	GUI* pGUI = pManager->GetGUI();
-	
-		pGUI->ClearToolBar();
-		pGUI->CreateColorToolBar();
-		pGUI->ClearStatusBar();
+
+	//create color tool bar
+	pGUI->ClearToolBar();
+	pGUI->CreateColorToolBar();
+	pGUI->ClearStatusBar();
+	pGUI->PrintMessage("Welcome To Color Tool Bar");
 		
 }
