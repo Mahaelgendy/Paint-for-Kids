@@ -6,6 +6,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 	ID = 0;
 	area = 0.0f;
+	pOut = 0;
 	center = { 0, 0 };
 	
 }
@@ -20,6 +21,7 @@ void CFigure::ChngDrawClr(color Dclr)
 {	FigGfxInfo.DrawClr = Dclr; }
 
 void CFigure::ChngFillClr(color Fclr)
+
 {	
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
@@ -28,5 +30,7 @@ void CFigure::ChngFillClr(color Fclr)
 
 void CFigure::PrintInfo(GUI* pOut)
 {
+
+
 }
 

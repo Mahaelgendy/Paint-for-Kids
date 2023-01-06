@@ -4,6 +4,11 @@
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 
+
+#include "Actions\BringToForward.h"
+
+#include "Actions\SendToBack.h"
+
 class Action;	//Forward Declaration
 
 
@@ -19,7 +24,7 @@ private:
 	//Pointers to Input and Output classes
 	GUI* pGUI;
 	bool filled;
-
+	int selectedCount;
 
 public:
 	ApplicationManager();
@@ -46,9 +51,18 @@ public:
 	// -- Interface Management Functions	
 	GUI* GetGUI() const; //Return pointer to the interface
 	void UpdateInterface() const;	//Redraws all the drawing window
-
+	
 	bool getFillColor();
 	void setFillColor(bool);
+	
+
+	void SendToBack(int index);
+	
+	void BringToFront(int index);
+
+	int GetSelectedFigureIndex();
+	int GetSelectedNu();
+
 	
 };
 #endif

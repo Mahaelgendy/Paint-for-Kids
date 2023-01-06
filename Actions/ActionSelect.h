@@ -8,7 +8,7 @@
 class ActionSelect : public Action
 {
 private:
-	Point P;
+	Point P1;
 public:
 	ActionSelect(ApplicationManager* pApp);
 

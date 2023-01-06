@@ -11,6 +11,11 @@
 #include "Actions\ActionResize.h"
 #include "Actions\ActionSwitchToDrawMode.h"
 #include "Actions\ActionSwitchToPlay.h"
+#include "Actions\BringToForward.h"
+#include "Actions\SendToBack.h"
+
+
+
 
 
 
@@ -18,6 +23,9 @@
 //Constructor
 ApplicationManager::ApplicationManager()
 {
+
+
+	selectedCount = 0;
 	//Create Input and output
 	pGUI = new GUI;	
 	filled = false;
@@ -86,6 +94,14 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case SELECT_FILL_COLOR:
 			newAct = new ActionFillButton(this);
+			break;
+
+		case SEND_BACK:
+			newAct = new ActionSendToBack(this);
+			break;
+
+		case BRNG_FRNT:
+			newAct = new ActionBringToFront(this);
 			break;
 		case RESIZE :
 			newAct = new ActionResize(this,SelectedFig);
@@ -159,6 +175,7 @@ int ApplicationManager::getSelectedFigure()
 CFigure* ApplicationManager::GetSelectedFigure() const
 {
 	//check if a figure selected
+
 	for (int i = (FigCount - 1); i >= 0; i--) {
 		if (FigList[i]->IsSelected()) return FigList[i];
 	}
@@ -198,6 +215,62 @@ bool ApplicationManager::getFillColor()
 }
 
 
+
+
+//==================================================================================//
+//				  Send to back/ Bring to forward Functions							//
+//==================================================================================//
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//the index of the figure selected 
+int ApplicationManager::GetSelectedFigureIndex() {
+	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i] != NULL) {
+			if (FigList[i]->IsSelected())
+				return i;
+		}
+	}
+	return -1;
+
+}
+
+//Send To Back
+void ApplicationManager::SendToBack(int index) {
+	CFigure* SelectedFigure = FigList[index];
+	for (int i = index; i > 0; i--)
+		FigList[i] = FigList[i - 1];
+
+	FigList[0] = SelectedFigure;
+}
+//Bring To Front
+void ApplicationManager::BringToFront(int index) {
+	CFigure* SelectedFigure = FigList[index];
+	for (int i = index; i < FigCount - 1; i++)
+		FigList[i] = FigList[i + 1];
+
+	FigList[FigCount - 1] = SelectedFigure;
+}
+
+
+
+
+//the number of figure selected 
+int ApplicationManager::GetSelectedNu() {
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected()) {
+			selectedCount++;
+		}
+		return selectedCount;
+
+	}
+
+}
+
+
+
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
@@ -206,3 +279,8 @@ ApplicationManager::~ApplicationManager()
 	delete pGUI;
 	
 }
+
+
+
+
+
