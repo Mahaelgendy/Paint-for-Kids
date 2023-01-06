@@ -133,7 +133,7 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new PickByType(this);
 			break;
 		case PLAY_COLORS:
-			newAct = new ActionPickByColor(this);
+			//newAct = new ActionPickByColor(this);
 			break;
 		case PLAY_SHAPES_COLORS:
 			newAct = new PickByTypeAndColor(this);
