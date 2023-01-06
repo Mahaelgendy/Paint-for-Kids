@@ -17,7 +17,6 @@ protected:
 	Point center;
 	bool PlayHidden;
 	
-	/// Add more parameters if needed.
 
 public:
 	CFigure();
@@ -44,14 +43,13 @@ public:
 	virtual int Resize(float) = 0;	//Resize the figure
 	//virtual void Move() = 0;		//Move the figure
 
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	virtual void Save(ofstream &File) = 0;	//Save the figure parameters to the file
+	virtual void Load(ifstream &File) = 0;	//Load the figure parameters to the file
 
 	virtual void PrintInfo(GUI* pOut);	//print all figure info on the status bar
-	virtual void Save(ofstream& File);
-	virtual void Load(ifstream& File);
-	color convertStringtoColor(string) const;
-	string convertColortoString(color) const;
+
+	color convertStringtoColor(string) const;  // Convert  String to Object Color ---> 
+	string convertColortoString(color) const; //Convert   Object Color to String  --->  
 
 };
 

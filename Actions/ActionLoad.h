@@ -10,9 +10,6 @@ public:
 
 	ActionLoad(ApplicationManager* pApp);
 
-	//Reads ellipse parameter
-
-	//Add ellipse to the ApplicationManager
 	virtual void Execute();
 };
 #endif

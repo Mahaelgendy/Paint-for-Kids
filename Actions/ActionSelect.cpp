@@ -17,35 +17,19 @@ void ActionSelect::Execute()
 	//Get a Pointer to the Interface
 	GUI* pGUI = pManager->GetGUI();
 
-
-
-
 	//Step 1 - Read click from user the user
-
 	pGUI->PrintMessage("Select Any figure.... ");
-	//Read 1st point and store in point P1
-	pGUI->GetPointClicked(P1.x, P1.y);
-
-	if (P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight)
-	{
-		bool flag = false; //false as long as the click is in wrong place
-		pGUI->PrintMessage("Please, Choose a valid Point");
-		while (!flag)
-		{
-			pGUI->GetPointClicked(P1.x, P1.y); //Get Pasting Point
-			if (!(P1.y < UI.StatusBarHeight || P1.y > UI.height - UI.StatusBarHeight))
-				flag = 1;
-		}
-	}
-
+	//Read  point and store in point P1
+	P1 = GetPoint();
+	
 	pGUI->ClearStatusBar();
 
-
+	//Step 2 - Get the The Selecterd Figer Address
 	CFigure* fig= pManager->GetFigure(P1.x, P1.y);
 	 
 
-	
-
+	//Step 3 - If The Point Exist in The Figure List
+	//Switch from Selected to UnSelected or vice versa
 	if (fig != NULL)
 	{
 		if (fig->IsSelected())

@@ -4,11 +4,9 @@
 
 #include "Action.h"
 
-//Add Square Action class
+//Add Select Action class
 class ActionSelect : public Action
 {
-private:
-	Point P;
 public:
 	ActionSelect(ApplicationManager* pApp);
 

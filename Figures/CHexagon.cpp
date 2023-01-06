@@ -13,17 +13,17 @@ CHexagon::CHexagon(Point P1, int HorizentalLength, int VertivalLength, GfxInfo F
 	area = (6 * (VerticalLen * VerticalLen)) / (4.0 * tan((M_PI / 6)));
 		
 }
-CHexagon::CHexagon()
-{
-}
+//////////////////////////////////////////////////////////////////////////////////////////////
+CHexagon::CHexagon(){
+} //default constructor, We need it to Load
 	
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 void CHexagon::DrawMe(GUI* pGUI) const
 {
-	//Call Output::DrawRect to draw a Square on the screen	
+	//Call Output::DrawHexagon to draw a Square on the screen	
 	pGUI->DrawHexagon(TopLeftCorner, VerticalLen,HorizentalLen, FigGfxInfo, Selected);
 }
-int CHexagon::Resize(float size) {
+int CHexagon::Resize(float size) {  
 	int newVerLen = this->VerticalLen * size ;
 	int newHor = this->HorizentalLen * size;
 
@@ -40,12 +40,9 @@ int CHexagon::Resize(float size) {
 		this->HorizentalLen = newHor;
 		return 0;
 	}
-
-    /*this->VerticalLen = this->VerticalLen * size;
-    this->HorizentalLen = this->HorizentalLen * size;*/
 }
-
-bool CHexagon::IsInFig(int x, int y) {
+//////////////////////////////////////////////////////////////////////////////////////////////
+bool CHexagon::IsInFig(int x, int y) {  //Determine the position of the point
 	boolean c = false;
 	int vertexX[6] = { TopLeftCorner.x, TopLeftCorner.x + HorizentalLen , TopLeftCorner.x + (1.5 * HorizentalLen), (TopLeftCorner.x + HorizentalLen), TopLeftCorner.x, abs(TopLeftCorner.x - (0.5 * HorizentalLen)) };
 	int vertexY[6] = { TopLeftCorner.y,TopLeftCorner.y, TopLeftCorner.y + VerticalLen, TopLeftCorner.y + (2 * VerticalLen), TopLeftCorner.y + (2 * VerticalLen), abs(TopLeftCorner.y + VerticalLen) };
@@ -57,7 +54,8 @@ bool CHexagon::IsInFig(int x, int y) {
 	}
 	return c;
 }
-void CHexagon::PrintInfo(GUI* pOut)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CHexagon::PrintInfo(GUI* pOut)   //Print Figer Data 
 {
 	pOut->PrintMessage(string(
 		"Hexagon =>ID: ") + to_string(ID) +
@@ -66,7 +64,8 @@ void CHexagon::PrintInfo(GUI* pOut)
 		" =>Area: " + std::to_string(int(area))
 		);
 }
-void CHexagon::Save(ofstream& File)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CHexagon::Save(ofstream& File)  //Write Figer Data On File 
 {
 	File << "Hexagon\t" << ID << "\t" << TopLeftCorner.x << "\t" << TopLeftCorner.y << "\t" << VerticalLen << "\t" << HorizentalLen << "\t"
 	<< convertColortoString(FigGfxInfo.DrawClr) << "\t";
@@ -75,7 +74,8 @@ void CHexagon::Save(ofstream& File)
 	else
 		File << "NON-FILLED\n";
 }
- void CHexagon::Load(ifstream& Infile)
+//////////////////////////////////////////////////////////////////////////////////////////////
+ void CHexagon::Load(ifstream& Infile)  //Set the Load Data To figer 
 {
 	 string temp;
 	 Infile >> this->ID >> this->TopLeftCorner.x >> this->TopLeftCorner.y >> this->VerticalLen >> this->HorizentalLen ;

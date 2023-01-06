@@ -15,8 +15,4 @@ void ActionColorMenu::Execute()
 		pGUI->CreateColorToolBar();
 		pGUI->ClearStatusBar();
 		
-		
-		
-	
-
 }

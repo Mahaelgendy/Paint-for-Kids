@@ -8,17 +8,19 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo) :CFigure
 	Corner2 = P2;
 	Corner3 = P3;
 	ID = 300 + newID++;
-	area = abs((Corner1.x * (Corner2.y - Corner3.y) + Corner2.x * (Corner3.y - Corner1.y) + Corner3.x * (Corner1.y - Corner2.y)) / 2.0);
+	area = float(abs((Corner1.x - Corner2.x) * (Corner1.y - Corner2.y)));
 }
-CTriangle::CTriangle()
+//////////////////////////////////////////////////////////////////////////////////////////////
+CTriangle::CTriangle() //default constructor, We need it to Load
 {}
 void CTriangle::DrawMe(GUI* pGUI) const
 {
-	//Call Output::DrawRect to draw a Square on the screen	
+	//Call Output::DrawTriangle to draw a Square on the screen	
 	pGUI->DrawTriangle(Corner1, Corner2, Corner3, FigGfxInfo, Selected);
 
 }
-int CTriangle::Resize(float size)
+//////////////////////////////////////////////////////////////////////////////////////////////
+int CTriangle::Resize(float size) //to increase and decrease size of figer 
 {
 	Point newCorner1 = Corner1;
 	Point newCorner2 = Corner2;
@@ -73,7 +75,8 @@ int CTriangle::Resize(float size)
 	Corner3 = newCorner3;
 	return 0;
 }
-void CTriangle::PrintInfo(GUI* pOut)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CTriangle::PrintInfo(GUI* pOut)//Print Figer Data 
 {
 	pOut->PrintMessage(std::string("Triangle =>ID: ") +
 		std::to_string(ID) + " =>Vertices: ( " + std::to_string(Corner1.x) +
@@ -82,11 +85,13 @@ void CTriangle::PrintInfo(GUI* pOut)
 		", " + std::to_string(Corner3.y) + " ) =>Area: " + std::to_string(int(area)) );
 
 }
-float area2(int x1, int y1, int x2, int y2, int x3, int y3)
+float area2(int x1, int y1, int x2, int y2, int x3, int y3)  
 {
 	return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0);
 }
-bool CTriangle::IsInFig(int x, int y) {
+//////////////////////////////////////////////////////////////////////////////////////////////
+bool CTriangle::IsInFig(int x, int y)//Determine the position of the point
+{
 	float A = area2(Corner1.x, Corner1.y, Corner2.x, Corner2.y, Corner3.x, Corner3.y);
 	float A1 = area2(x, y, Corner2.x, Corner2.y, Corner3.x, Corner3.y);
 	float A2 = area2(Corner1.x, Corner1.y, x, y, Corner3.x, Corner3.y);
@@ -97,7 +102,8 @@ bool CTriangle::IsInFig(int x, int y) {
 	}
 	return false;
 }
-void CTriangle::Save(ofstream& File)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CTriangle::Save(ofstream& File)//Write Figer Data On File 
 {
 	File << "Triangle\t" << ID << "\t" << Corner1.x << "\t"
 		<< Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y
@@ -109,7 +115,8 @@ void CTriangle::Save(ofstream& File)
 		File << "NON-FILLED\n";
 
 }
-void CTriangle::Load(ifstream& Infile)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CTriangle::Load(ifstream& Infile)//Set the Load Data To figer 
 {
 	string temp;
 	Infile >> this->ID >> this->Corner1.x >> this->Corner1.y >> this->Corner2.x >> this->Corner2.y >> this->Corner3.x >> this->Corner3.y;

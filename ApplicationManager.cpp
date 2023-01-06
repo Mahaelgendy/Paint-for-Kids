@@ -23,6 +23,7 @@
 
 #include "Actions\ActionSwitchToPlay.h"
 #include "Actions\PickByType.h"
+#include "Actions\PickByTypeAndColor.h"
 
 
 
@@ -80,11 +81,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new ActionAddTriangle(this);
 			break;
 		case DRAW_ELPS:
-			///create AddLineAction here
 			newAct = new ActionAddEllipse(this);
 			break;
 		case DRAW_HEX:
-			///create AddLineAction here
 			newAct = new ActionAddHexagon(this);
 			break;
 		case SELECT:
@@ -132,6 +131,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case PLAY_COLORS:
 			newAct = new ActionPickByColor(this);
+			break;
+		case PLAY_SHAPES_COLORS:
+			newAct = new PickByTypeAndColor(this);
 			break;
 		
 		case EXIT:
@@ -185,6 +187,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 		}
 	return NULL;
 }
+////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::DrawnFigs(int i) const
 {
 	return FigList[i];
@@ -197,6 +200,7 @@ int ApplicationManager::getSelectedFigure()
 			return i;
 	return -1;
 }
+////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetSelectedFigure() const
 {
 	//check if a figure selected
@@ -244,7 +248,7 @@ void ApplicationManager::DeleteAllFig()
 		FigList[i] = NULL;
 	FigCount = 0;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
 bool ApplicationManager::getFillColor()
 {
 	return filled;
@@ -254,12 +258,7 @@ void ApplicationManager::SaveFigData(ofstream& File) {
 	for (int i = 0; i < FigCount; ++i)
 		FigList[i]->Save(File);
 }
-
-color ApplicationManager::stringToColor(string)
-{
-	return color();
-}
-
+////////////////////////////////////////////////////////////////////////////////////
 string ApplicationManager::colorToString(color c)
 {
 	std::ostringstream os;
@@ -271,8 +270,7 @@ string ApplicationManager::colorToString(color c)
 
 	return s;
 }
-
-
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::BringToFront(int selectedIndex)
 {
 	if (selectedIndex != FigCount - 1)
@@ -287,15 +285,11 @@ void ApplicationManager::BringToFront(int selectedIndex)
 }
 void ApplicationManager::SendToBack(int selectedIndex)
 {
-	if (selectedIndex != FigCount - 1)
-	{
-		for (int i = selectedIndex; i >0 ; i--)
-		{
-			CFigure* temp = FigList[i];
-			FigList[i] = FigList[i - 1];
-			FigList[i - 1] = temp;
-		}
-	}
+	CFigure* SelectedFigure = FigList[selectedIndex];
+	for (int i = selectedIndex; i > 0; i--)
+		FigList[i] = FigList[i - 1];
+
+	FigList[0] = SelectedFigure;
 }
 //Destructor
 ApplicationManager::~ApplicationManager()

@@ -18,7 +18,7 @@ public:
 
 	//Execute action (code depends on action type)
 	virtual void Execute() =0;
-
+	virtual Point GetPoint();
 	//To undo this action (code depends on action type)
 	//virtual void Undo()=0;
 

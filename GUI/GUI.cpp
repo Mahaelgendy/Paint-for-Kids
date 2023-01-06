@@ -58,8 +58,11 @@ string GUI::GetSrting() const
 			return "";	//returns nothing as user has cancelled label
 		if(Key == 13 )	//ENTER key is pressed
 			return Label;
-		if(Key == 8 )	//BackSpace is pressed
-			Label.resize(Label.size() -1 );			
+		if(Key == 8 ){	//BackSpace is pressed
+			if (Label.size() > 0) {
+				Label.resize(Label.size() - 1);
+			}
+		}
 		else
 			Label+= Key;
 		PrintMessage(Label);
@@ -91,9 +94,6 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_HEXA: return DRAW_HEX;
 			case ITM_SELECT: return SELECT;
 			case ITEM_COLOR: return TO_COLOR;
-			/*case ITM_DRAW_COLOR: return CHNG_DRAW_CLR;
-			case ITM_FILL_COLOR: return CHNG_FILL_CLR;
-			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;*/
 			case ITIM_RESIZE: return RESIZE;
 			case ITM_TO_FRONT: return BRNG_FRNT;
 			case ITM_TO_BACK: return SEND_BACK;
@@ -240,9 +240,6 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\menu_hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
 	MenuItemImages[ITEM_COLOR] = "images\\MenuItems\\Color1.jpg";
-	/*MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
-	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";*/
-
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	MenuItemImages[ITM_TO_FRONT] = "images\\MenuItems\\bringfront.jpg";
 	MenuItemImages[ITM_TO_BACK] = "images\\MenuItems\\sendback.jpg";
@@ -445,11 +442,9 @@ void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool s
 	}
 	else
 		style = FRAME;
-	//DrawTriangle(const int iX1, const int iY1, const int iX2, const int iY2, const int iX3, const int iY3, const drawstyle dsStyle)
 
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
-//DrawEllipse(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle)
 void GUI::DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected) const
 {
 	color DrawingClr;
@@ -468,7 +463,6 @@ void GUI::DrawEllipse(Point P1, Point P2, GfxInfo EllipseGfxInfo, bool selected)
 	}
 	else
 		style = FRAME;
-	//DrawTriangle(const int iX1, const int iY1, const int iX2, const int iY2, const int iX3, const int iY3, const drawstyle dsStyle)
 
 	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
 }

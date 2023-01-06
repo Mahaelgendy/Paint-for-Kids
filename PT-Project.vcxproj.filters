@@ -203,6 +203,12 @@
     <ClCompile Include="Actions\ActionPickByColor.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Action.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickByTypeAndColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -346,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="Actions\ActionColorMenu.h" />
     <ClInclude Include="Actions\ActionPickByColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickByTypeAndColor.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

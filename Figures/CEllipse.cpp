@@ -11,16 +11,14 @@ CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureG
 	ID = 200 + newID++;
 	area = 3.1415f * P1.x * P2.x;
 }
-CEllipse::CEllipse()
+CEllipse::CEllipse() //default constructor, We need it to Load
 {
 }
 void CEllipse::DrawMe(GUI* pGUI) const
-{
-	//DrawEllipse(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle)
-
+{	//Call GUI::DrawEllipse to draw a ellipse on the screen
 	pGUI->DrawEllipse(P1, P2, FigGfxInfo, Selected);
 }
-int CEllipse::Resize(float size) 
+int CEllipse::Resize(float size)  //to increase and decrease size of figer
 {
 	float centreX = (this->P2.x + this->P1.x) / 2;
 	float centreY = (this->P2.y + this->P1.y) / 2;
@@ -37,8 +35,6 @@ int CEllipse::Resize(float size)
 	int rightCornerX = newP1X - 0.0*newRadius;
 	int rightCornerY = newP1Y - 0*newRadius;
 
-	//if (rightCornerY < UI.StatusBarHeight || rightCornerY > UI.height - UI.StatusBarHeight)return 1;
-	//if (leftCornerY < UI.StatusBarHeight || leftCornerY > UI.height - UI.StatusBarHeight) return 1;
 	if (leftCornerX < UI.wx || leftCornerX > UI.width + UI.wx) return 1;
 	if (rightCornerX < UI.wx || rightCornerX > UI.width + UI.wx) return 1;
 	
@@ -49,7 +45,7 @@ int CEllipse::Resize(float size)
 	return 0;
 	
 }
-void CEllipse::PrintInfo(GUI* pOut)
+void CEllipse::PrintInfo(GUI* pOut)  //Print Figer Data 
 {
 	Point center;
 	center.x = 0.5 * (P2.x + P1.x);
@@ -63,7 +59,8 @@ void CEllipse::PrintInfo(GUI* pOut)
 		", " + to_string(center.y) + " )");
 }
 
-bool CEllipse::IsInFig(int x, int y) {
+bool CEllipse::IsInFig(int x, int y) //Determine the position of the point
+{
     Point center;
     center.x = 0.5 * (P2.x + P1.x);
     center.y = 0.5 * (P2.y + P1.y);
@@ -75,7 +72,7 @@ bool CEllipse::IsInFig(int x, int y) {
 
     return false;
 }
-void CEllipse::Save(ofstream& File)
+void CEllipse::Save(ofstream& File) //Write Figer Data On File 
 {
 	File << "Elipse \t" << ID << "\t" << P1.x << "\t" << P1.y << "\t" << P2.x << "\t" << P2.y << "\t"
 		<< convertColortoString(FigGfxInfo.DrawClr) << "\t";
@@ -84,11 +81,10 @@ void CEllipse::Save(ofstream& File)
 		else
 			File << "NON-FILLED\n";
 }
-void CEllipse::Load(ifstream& Infile)
+void CEllipse::Load(ifstream& Infile) //Set the Load Data To figer 
 {
 	string temp;
 	Infile >> this->ID >> this->P1.x >> this->P1.y >> this->P2.x >> this->P2.y;
-	cout << "ID" << this->ID << "p1x" << this->P1.x << "p1y" << this->P1.y;
 	Infile >> temp;
 	this->FigGfxInfo.DrawClr = convertStringtoColor(temp);
 	Infile >> temp;

@@ -12,7 +12,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
 	PlayHidden = false;
-	ID = 0;
+	ID = 0;  
 	area = 0.0f;
 	center = { 0, 0 };
 }
@@ -52,18 +52,14 @@ bool CFigure::HiddenStatus() const
 	return PlayHidden;
 }
 
-void CFigure::Save(ofstream& File)
-{
-}
-void CFigure::Load(ifstream& File)
-{};
-
 GfxInfo CFigure::GetGfxInfo() const
 {
 	return FigGfxInfo;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////
 color CFigure::convertStringtoColor(string colorName) const
 {
+	//Function to Convert  String to Object Color --->  We Need It on Load
 	if (colorName == "BLUE")  return BLUE;
 	if (colorName == "BLACK") return BLACK;
 	if (colorName == "BLUE")  return BLUE;
@@ -84,9 +80,10 @@ color CFigure::convertStringtoColor(string colorName) const
 	if (colorName == "LIGHTGOLDENRODYELLOW") return LIGHTGOLDENRODYELLOW;
 	return BLACK;
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 string CFigure::convertColortoString(color c) const
 {
+	//Function to Convert   Object Color to String  --->  We Need It on Save
 	if ((c.ucBlue == BLACK.ucBlue) && (c.ucGreen == BLACK.ucGreen) && (c.ucRed == BLACK.ucRed))
 		return "BLACK";
 	if ((c.ucBlue == BLUE.ucBlue) && (c.ucGreen == BLUE.ucGreen) && (c.ucRed == BLUE.ucRed))

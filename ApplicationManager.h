@@ -46,7 +46,6 @@ public:
 
 	void SaveFigData(ofstream &File);
 
-	color stringToColor(string);
 	string colorToString(color);
 
 	void BringToFront( int selectedIndex);

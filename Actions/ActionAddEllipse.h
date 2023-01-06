@@ -3,16 +3,14 @@
 
 #include "Action.h"
 
-//Add Square Action class
+//Add Ellipse Action class
 class ActionAddEllipse: public Action
 {
 public:
 	ActionAddEllipse(ApplicationManager *pApp);
 	
-	//Add Square to the ApplicationManager
+	//Add Ellipse to the ApplicationManager
 	virtual void Execute() ;
-
-	
 };
 
 #endif
