@@ -23,9 +23,26 @@ void CHexagon::DrawMe(GUI* pGUI) const
 	//Call Output::DrawRect to draw a Square on the screen	
 	pGUI->DrawHexagon(TopLeftCorner, VerticalLen,HorizentalLen, FigGfxInfo, Selected);
 }
-void CHexagon::Resize(float size) {
-    this->VerticalLen = this->VerticalLen * size;
-    this->HorizentalLen = this->HorizentalLen * size;
+int CHexagon::Resize(float size) {
+	int newVerLen = this->VerticalLen * size ;
+	int newHor = this->HorizentalLen * size;
+
+	float maxHorLen = TopLeftCorner.x + 1.5 * newHor;
+	float minHorLen = abs(TopLeftCorner.x - 0.5 * newHor);
+	float maxVerLen = TopLeftCorner.y + 2 * newVerLen;
+
+	if (minHorLen < UI.wx || maxHorLen > UI.width + UI.wx || maxVerLen < UI.StatusBarHeight || maxVerLen > UI.height - UI.StatusBarHeight)
+	{
+		return 1;
+	}
+	else {
+		this->VerticalLen= newVerLen;
+		this->HorizentalLen = newHor;
+		return 0;
+	}
+
+    /*this->VerticalLen = this->VerticalLen * size;
+    this->HorizentalLen = this->HorizentalLen * size;*/
 }
 
 bool CHexagon::IsInFig(int x, int y) {

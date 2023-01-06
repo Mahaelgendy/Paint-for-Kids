@@ -6,7 +6,7 @@
 //constractor
 CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	 P1=_P1;
+	P1=_P1;
 	P2=_P2;
 	ID = 200 + newID++;
 	area = 3.1415f * P1.x * P2.x;
@@ -20,10 +20,34 @@ void CEllipse::DrawMe(GUI* pGUI) const
 
 	pGUI->DrawEllipse(P1, P2, FigGfxInfo, Selected);
 }
-void CEllipse::Resize(float size) {
-	this->P2.x = this->P2.x * size;
-	this->P2.y = this->P2.y * size;
+int CEllipse::Resize(float size) 
+{
+	float centreX = (this->P2.x + this->P1.x) / 2;
+	float centreY = (this->P2.y + this->P1.y) / 2;
+	float radius = abs(centreX - this->P1.x);
+	int newRadius= radius * size;
 
+	int newP2X = centreX + newRadius;
+	int newP2Y = centreY + 0.5*newRadius;
+	int newP1X = centreX - newRadius;
+	int newP1Y = centreY - 0.5*newRadius;
+
+	int leftCornerX = newP2X + 0.0*newRadius;
+	int leftCornerY = newP2Y + 0*newRadius;
+	int rightCornerX = newP1X - 0.0*newRadius;
+	int rightCornerY = newP1Y - 0*newRadius;
+
+	//if (rightCornerY < UI.StatusBarHeight || rightCornerY > UI.height - UI.StatusBarHeight)return 1;
+	//if (leftCornerY < UI.StatusBarHeight || leftCornerY > UI.height - UI.StatusBarHeight) return 1;
+	if (leftCornerX < UI.wx || leftCornerX > UI.width + UI.wx) return 1;
+	if (rightCornerX < UI.wx || rightCornerX > UI.width + UI.wx) return 1;
+	
+	this->P2.x = newP2X;
+	this->P2.y = newP2Y;
+	this->P1.x = newP1X;
+	this->P1.y = newP1Y;
+	return 0;
+	
 }
 void CEllipse::PrintInfo(GUI* pOut)
 {

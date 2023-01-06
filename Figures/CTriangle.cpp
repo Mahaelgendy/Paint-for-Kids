@@ -18,46 +18,60 @@ void CTriangle::DrawMe(GUI* pGUI) const
 	pGUI->DrawTriangle(Corner1, Corner2, Corner3, FigGfxInfo, Selected);
 
 }
-void CTriangle::Resize(float size)
+int CTriangle::Resize(float size)
 {
+	Point newCorner1 = Corner1;
+	Point newCorner2 = Corner2;
+	Point newCorner3 = Corner3;
+
 	if (size == 0.5) size = -1;
 	else if(size == 0.25) size = -(4.0 / 3);
 
 	Point O;
 	O.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
 	O.y = (Corner1.y + Corner2.y + Corner3.y) / 3;
-	if (Corner1.x <= O.x)
-		Corner1.x -= (O.x - Corner1.x) * size / 2;
+
+	if (newCorner1.x <= O.x)
+		newCorner1.x -= (O.x - newCorner1.x) * size / 2;
 	else
-		Corner1.x += (Corner1.x - O.x) * size / 2;
+		newCorner1.x += (newCorner1.x - O.x) * size / 2;
 
-	if (Corner2.x <= O.x)
-		Corner2.x -= (O.x - Corner2.x) * size / 2;
+	if (newCorner2.x <= O.x)
+		newCorner2.x -= (O.x - newCorner2.x) * size / 2;
 	else
-		Corner2.x += (Corner2.x - O.x) * size / 2;
+		newCorner2.x += (newCorner2.x - O.x) * size / 2;
 
-	if (Corner3.x <= O.x)
-		Corner3.x -= (O.x - Corner3.x) * size / 2;
+	if (newCorner3.x <= O.x)
+		newCorner3.x -= (O.x - newCorner3.x) * size / 2;
 	else
-		Corner3.x += (Corner3.x - O.x) * size / 2;
+		newCorner3.x += (newCorner3.x - O.x) * size / 2;
 
-	if (Corner1.y <= O.y)
-		Corner1.y -= (O.y - Corner1.y) * size / 2;
+	if (newCorner1.y <= O.y)
+		newCorner1.y -= (O.y - newCorner1.y) * size / 2;
 	else
-		Corner1.y += (Corner1.y - O.y) * size / 2;
+		newCorner1.y += (newCorner1.y - O.y) * size / 2;
 
-	if (Corner2.y <= O.y)
-		Corner2.y -= (O.y - Corner2.y) * size / 2;
+	if (newCorner2.y <= O.y)
+		newCorner2.y -= (O.y - newCorner2.y) * size / 2;
 	else
-		Corner2.y += (Corner2.y - O.y) * size / 2;
+		newCorner2.y += (newCorner2.y - O.y) * size / 2;
 
-	if (Corner3.y <= O.y)
-		Corner3.y -= (O.y - Corner3.y) * size / 2;
+	if (newCorner3.y <= O.y)
+		newCorner3.y -= (O.y - newCorner3.y) * size / 2;
 	else
-		Corner3.y += (Corner3.y - O.y) * size / 2;
-
-	//to complete
-
+		newCorner3.y += (newCorner3.y - O.y) * size / 2;
+	
+	if (newCorner1.y < UI.StatusBarHeight || newCorner1.y > UI.height - UI.StatusBarHeight)return 1;
+	if (newCorner2.y < UI.StatusBarHeight || newCorner2.y > UI.height - UI.StatusBarHeight) return 1;
+	if (newCorner3.y < UI.StatusBarHeight || newCorner3.y > UI.height - UI.StatusBarHeight) return 1;
+	if (newCorner1.x < UI.wx || newCorner1.x > UI.width + UI.wx) return 1;
+	if (newCorner2.x < UI.wx || newCorner2.x > UI.width + UI.wx) return 1;
+	if (newCorner3.x < UI.wx || newCorner3.x > UI.width + UI.wx) return 1;
+	
+	Corner1 = newCorner1;
+	Corner2 = newCorner2 ;
+	Corner3 = newCorner3;
+	return 0;
 }
 void CTriangle::PrintInfo(GUI* pOut)
 {

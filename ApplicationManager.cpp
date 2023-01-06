@@ -55,7 +55,7 @@ void ApplicationManager::Run()
 		ExecuteAction(pAct);
 
 		//4- Update the interface
-		UpdateInterface();	
+		UpdateInterface();
 
 	}while(ActType != EXIT);
 	
