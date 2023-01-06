@@ -10,10 +10,14 @@ private:
 	int length;
 public:
 	CSquare(Point , int, GfxInfo FigureGfxInfo );
+	CSquare();
 	virtual void DrawMe(GUI* pOut) const;
 	virtual bool IsInFig(int, int);
 	virtual void Resize(float);
 	virtual void PrintInfo(GUI* pOut);
+	virtual void Save(ofstream& File);
+	virtual void Load(ifstream& Infile);
+
 };
 
 #endif

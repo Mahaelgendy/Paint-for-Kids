@@ -43,10 +43,13 @@ public:
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	CFigure* GetSelectedFigure() const;
 	CFigure* GetNotSelectedFigure() const;
+	CFigure* DrawnFigs(int i) const;
 	int* getFigCount();
 	CFigure** getFigList();
 	int getSelectedFigure();
-
+	void SaveFigData(ofstream &File);
+	color stringToColor(string);
+	string colorToString(color);
 
 	// -- Interface Management Functions	
 	GUI* GetGUI() const; //Return pointer to the interface
@@ -54,6 +57,7 @@ public:
 	
 	bool getFillColor();
 	void setFillColor(bool);
+	void DeleteAllFig();
 	
 
 	void SendToBack(int index);

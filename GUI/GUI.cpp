@@ -1,4 +1,4 @@
-#include "GUI.h"
+ #include "GUI.h"
 #include <iostream>
 
 //constructor make necessary initializations
@@ -17,12 +17,12 @@ GUI::GUI()
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 80;
 	
-	UI.DrawColor = BLUE;	//Drawing color
+	UI.DrawColor = SNOW;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
-	UI.MsgColor = RED;		//Messages color
-	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
+	UI.MsgColor = DARKGREY2;		//Messages color
+	UI.BkGrndColor = POWDERBLUE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
-	UI.StatusBarColor = TURQUOISE;
+	UI.StatusBarColor = WHITE;
 	UI.PenWidth = 3;	//width of the figures frames
 
 	
@@ -90,7 +90,8 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_TRIG: return DRAW_TRIG; 
 			case ITM_HEXA: return DRAW_HEX;
 			case ITM_SELECT: return SELECT;
-			case ITM_DRAW_COLOR: return CHNG_DRAW_CLR;
+			case ITEM_COLOR: return TO_COLOR;
+			/*case ITM_DRAW_COLOR: return CHNG_DRAW_CLR;
 			case ITM_FILL_COLOR: return CHNG_FILL_CLR;
 			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;
 
@@ -99,9 +100,13 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_BTF:return BRNG_FRNT;
 				
 			
+			case ITM_FILL_BUTTON: return SELECT_FILL_COLOR;*/
 			case ITIM_RESIZE: return RESIZE;
 			case ITM_DELETE:  return DEL;
+			case ITM_SAVE: return SAVE;
+			case ITM_LOAD: return LOAD;
 			case ITM_PLAY: return TO_PLAY;
+			
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -116,6 +121,31 @@ ActionType GUI::MapInputToActionType() const
 		
 		//[3] User clicks on the status bar
 		return STATUS;
+	}
+	else if (UI.InterfaceMode == MODE_COLOR)
+	{
+		//[1] If user clicks on the Toolbar
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//If division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+			switch (ClickedItemOrder)
+			{
+			case ITM_BORDER: return CHNG_DRAW_CLR;
+			case ITM_FILL: return CHNG_FILL_CLR;
+			case ITM_BUTTON: return SELECT_FILL_COLOR;
+			case ITM_BLACK:return _BLACK;
+			case ITM_WHITE:return _WHITE;
+			case ITM_RED:return _RED;
+			case ITM_BLUE:return _BLUE;
+			case ITM_GREEN:return _GREEN;
+			case ITM_YELLOW:return _YELLOW;
+			case ITM_BACK4:  return GO_BACK;
+			}
+		}
 	}
 	else if (UI.InterfaceMode == MODE_SIZE)
 	{
@@ -167,6 +197,7 @@ ActionType GUI::MapInputToActionType() const
 
 		return STATUS;	//just for now. This should be updated
 	}
+	
 
 }
 //======================================================================================//
@@ -213,9 +244,9 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_TRIG.jpg";
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\menu_hexa.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select.jpg";
-	MenuItemImages[ITM_DRAW_COLOR] = "images\\MenuItems\\Color1.jpg";
-	MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
-	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";
+	MenuItemImages[ITEM_COLOR] = "images\\MenuItems\\Color1.jpg";
+	/*MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\Color1.jpg";
+	MenuItemImages[ITM_FILL_BUTTON] = "images\\MenuItems\\fill-icon.jpg";*/
 
 
 	MenuItemImages[ITM_BTF] = "images\\MenuItems\\bringtofront.jpg";
@@ -225,7 +256,10 @@ void GUI::CreateDrawToolBar() const
 
 	MenuItemImages[ITIM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_del.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.JPG";
 	MenuItemImages[ITM_PLAY] = "images\\MenuItems\\play.jpg";
+	
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 
@@ -239,10 +273,40 @@ void GUI::CreateDrawToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(GRAY, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
+void GUI::CreateColorToolBar() const
+{
+
+	UI.InterfaceMode = MODE_COLOR;
+
+	string MenuItemImages[COLOR_ITM_COUNT];
+	MenuItemImages[ITM_BORDER] = "images\\MenuItems\\border.jpg";
+	MenuItemImages[ITM_FILL] = "images\\MenuItems\\fill-icon.jpg";
+	MenuItemImages[ITM_BUTTON] = "images\\MenuItems\\switch.jpg";
+	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\black.jpg";
+	MenuItemImages[ITM_WHITE] = "images\\MenuItems\\white.jpg";
+	MenuItemImages[ITM_RED] = "images\\MenuItems\\red.jpg";
+	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\blue.jpg";
+	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\green.jpg";
+	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\yellow.jpg";
+	MenuItemImages[ITM_BACK4] = "images\\MenuItems\\back.jpg";
+
+
+	///TODO: write code to create Color mode menu
+	for (int i = 0; i < COLOR_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(CORNFLOWERBLUE, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+
+}
+
 void GUI::CreateResizeToolBar() const
 {
 
@@ -267,11 +331,13 @@ void GUI::CreateResizeToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
+
+
 void GUI::ClearToolBar() const
 {
 	//clear tool bar by drawing filled white square
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.ToolBarBkGrndColor);
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -368,8 +434,6 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 
 	
 	pWind->DrawRectangle(P1.x, P1.y, P1.x +length, P1.y+length, style);
-	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
 }
 
 void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriaGfxInfo, bool selected) const

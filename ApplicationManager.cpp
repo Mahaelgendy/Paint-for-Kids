@@ -4,15 +4,24 @@
 #include "Actions\ActionAddEllipse.h"
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionSelect.h"
+#include "Actions\ActionColorMenu.h"
 #include "Actions\ActionColor.h"
 #include "Actions\ActionFillColor.h"
 #include "Actions\ActionFillButton.h"
 #include "Actions\ActionDelete.h"
 #include "Actions\ActionResize.h"
 #include "Actions\ActionSwitchToDrawMode.h"
+#include "Actions\ActionSave.h"
+#include "Actions\ActionLoad.h"
+#include <string>
+#include <string.h>
+#include <iostream>
+#include<sstream> 
+
 #include "Actions\ActionSwitchToPlay.h"
 #include "Actions\BringToForward.h"
 #include "Actions\SendToBack.h"
+#include "Actions\PickByType.h"
 
 
 
@@ -86,6 +95,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case SELECT:
 			newAct = new ActionSelect(this);
 			break;
+		case TO_COLOR:
+			newAct = new ActionColorMenu(this);
+			break;
 		case CHNG_DRAW_CLR:
 			newAct = new ActionColor(this);
 			break;
@@ -112,9 +124,20 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DEL:
 			newAct = new ActionDelete(this);
 			break;
+		case SAVE:
+			newAct = new ActionSave(this, FigCount);
+			break;
+		case LOAD:
+			newAct = new ActionLoad(this);
+			break;
+
 		case TO_PLAY:
 			newAct = new ActionSwitchToPlay(this);
 			break;
+		case PLAY_SHAPES:
+			newAct = new PickByType(this);
+			break;
+		
 		case EXIT:
 			///create ExitAction here
 			
@@ -158,11 +181,17 @@ CFigure** ApplicationManager::getFigList() {
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	for (int i = FigCount - 1; i >= 0; i--)
-		if (FigList[i]->IsInFig(x, y))
-		{
-			return FigList[i];
+		if (FigList[i]->HiddenStatus() == false) {
+			if (FigList[i]->IsInFig(x, y))
+			{
+				return FigList[i];
+			}
 		}
 	return NULL;
+}
+CFigure* ApplicationManager::DrawnFigs(int i) const
+{
+	return FigList[i];
 }
 int ApplicationManager::getSelectedFigure()
 {
@@ -196,8 +225,12 @@ CFigure* ApplicationManager::GetNotSelectedFigure() const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->DrawMe(pGUI);		//Call Draw function (virtual member fn)
+	pGUI->ClearDrawArea();
+	for (int i = 0; i < FigCount; i++)
+	{
+		if(FigList[i]->HiddenStatus() == false)
+			FigList[i]->DrawMe(pGUI);		//Call Draw function (virtual member fn)
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the interface
@@ -207,6 +240,13 @@ GUI *ApplicationManager::GetGUI() const
 void ApplicationManager::setFillColor(bool _fillColor)
 {
 	filled = _fillColor;
+}
+
+void ApplicationManager::DeleteAllFig()
+{
+	for (int i = 0; i < FigCount; ++i)
+		FigList[i] = NULL;
+	FigCount = 0;
 }
 
 bool ApplicationManager::getFillColor()
@@ -254,6 +294,27 @@ void ApplicationManager::BringToFront(int index) {
 }
 
 
+void ApplicationManager::SaveFigData(ofstream& File) {
+	for (int i = 0; i < FigCount; ++i)
+		FigList[i]->Save(File);
+}
+
+color ApplicationManager::stringToColor(string)
+{
+	return color();
+}
+
+string ApplicationManager::colorToString(color c)
+{
+	std::ostringstream os;
+	os << int(c.ucRed) << "\t";
+	os << int(c.ucGreen) << "\t";
+	os << int(c.ucBlue);
+
+	std::string s = os.str();
+
+	return s;
+}
 
 
 //the number of figure selected 
