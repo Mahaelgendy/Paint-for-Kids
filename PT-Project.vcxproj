@@ -148,6 +148,7 @@
     <ClCompile Include="Actions\ActionSwitchToDrawMode.cpp" />
     <ClCompile Include="Actions\ActionSwitchToPlay.cpp" />
     <ClCompile Include="Actions\PickByType.cpp" />
+    <ClCompile Include="Actions\PickByTypeAndColor.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="Actions\ActionSwitchToDrawMode.h" />
     <ClInclude Include="Actions\ActionSwitchToPlay.h" />
     <ClInclude Include="Actions\PickByType.h" />
+    <ClInclude Include="Actions\PickByTypeAndColor.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

@@ -23,6 +23,7 @@
 
 #include "Actions\ActionSwitchToPlay.h"
 #include "Actions\PickByType.h"
+#include "Actions\PickByTypeAndColor.h"
 
 
 
@@ -132,6 +133,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case PLAY_COLORS:
 			newAct = new ActionPickByColor(this);
+			break;
+		case PLAY_SHAPES_COLORS:
+			newAct = new PickByTypeAndColor(this);
 			break;
 		
 		case EXIT:
