@@ -11,24 +11,15 @@ ActionFillButton::ActionFillButton(ApplicationManager* pApp) :Action(pApp)
 //Execute the action
 void ActionFillButton::Execute()
 {
-	Point P1;
-	color newFillColor;
-
 	//Get a Pointer to the Interface
 	GUI* pGUI = pManager->GetGUI();
-
-
-
-
-	//Step 1 - Read Square data from the user
-	pGUI->PrintMessage("Click Button: T o active Fill Color");
-	//Read 1st point and store in point P1
-	pGUI->GetPointClicked(P1.x, P1.y);
 	
+	//Active switch for  fill color
 	pManager->setFillColor(!pManager->getFillColor());
 
-
 	pGUI->ClearStatusBar();
+	//message switch for  fill color
+	pGUI->PrintMessage("Pick Fill Button Icon: Switch between Fill figure Color and background color (default background)");
 
 
 

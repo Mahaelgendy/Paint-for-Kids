@@ -3,13 +3,13 @@
 
 #include "Action.h"
 
-//Add Square Action class
+//Add Hexagon Action class
 class ActionAddHexagon : public Action
 {
 public:
 	ActionAddHexagon(ApplicationManager *pApp);
 	
-	//Add Square to the ApplicationManager
+	//Add Hexagon to the ApplicationManager
 	virtual void Execute() ;
 	
 };

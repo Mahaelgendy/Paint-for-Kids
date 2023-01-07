@@ -12,7 +12,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
 	PlayHidden = false;
-	ID = 0;
+	ID = 0;  
 	area = 0.0f;
 	center = { 0, 0 };
 }
@@ -52,18 +52,24 @@ bool CFigure::HiddenStatus() const
 	return PlayHidden;
 }
 
-void CFigure::Save(ofstream& File)
+GfxInfo CFigure::GetGfxInfo() const
 {
+	return FigGfxInfo;
 }
-void CFigure::Load(ifstream& File)
-{};
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 color CFigure::convertStringtoColor(string colorName) const
 {
-	if (colorName == "BLUE")  return BLUE;
+	//Function to Convert  String to Object Color --->  We Need It on Load
+	if (colorName == "BLUE")  return BLUE; 
+	if (colorName == "HOTPINK") return HOTPINK;
+	if (colorName == "SNOW") return SNOW;
+	if (colorName == "HOTRED") return HOTRED;
+	if (colorName == "HOTYELLOW") return HOTYELLOW;
+	if (colorName == "HOTGREEN") return HOTGREEN;
 	if (colorName == "BLACK") return BLACK;
-	if (colorName == "BLUE")  return BLUE;
+	if (colorName == "HOTBLUE")  return HOTBLUE; 
 	if (colorName == "WHITE") return WHITE;
+	if (colorName == "HOTGREEN") return HOTGREEN;
 	if (colorName == "RED") return RED;
 	if (colorName == "YELLOW") return YELLOW;
 	if (colorName == "GREEN") return GREEN;
@@ -80,13 +86,26 @@ color CFigure::convertStringtoColor(string colorName) const
 	if (colorName == "LIGHTGOLDENRODYELLOW") return LIGHTGOLDENRODYELLOW;
 	return BLACK;
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 string CFigure::convertColortoString(color c) const
 {
+	//Function to Convert   Object Color to String  --->  We Need It on Save
+	if ((c.ucBlue == SNOW.ucBlue) && (c.ucGreen == SNOW.ucGreen) && (c.ucRed == SNOW.ucRed))
+		return "SNOW";
+	if ((c.ucBlue == HOTGREEN.ucBlue) && (c.ucGreen == HOTGREEN.ucGreen) && (c.ucRed == HOTGREEN.ucRed))
+		return "HOTGREEN";
+	if ((c.ucBlue == HOTRED.ucBlue) && (c.ucGreen == HOTRED.ucGreen) && (c.ucRed == HOTRED.ucRed))
+		return "HOTRED";
+	if ((c.ucBlue == HOTYELLOW.ucBlue) && (c.ucGreen == HOTYELLOW.ucGreen) && (c.ucRed == HOTYELLOW.ucRed))
+		return "HOTYELLOW";
+	if ((c.ucBlue == HOTGREEN.ucBlue) && (c.ucGreen == HOTGREEN.ucGreen) && (c.ucRed == HOTGREEN.ucRed))
+		return "HOTGREEN";
 	if ((c.ucBlue == BLACK.ucBlue) && (c.ucGreen == BLACK.ucGreen) && (c.ucRed == BLACK.ucRed))
 		return "BLACK";
 	if ((c.ucBlue == BLUE.ucBlue) && (c.ucGreen == BLUE.ucGreen) && (c.ucRed == BLUE.ucRed))
 		return "BLUE";
+	if ((c.ucBlue == HOTBLUE.ucBlue) && (c.ucGreen == HOTBLUE.ucGreen) && (c.ucRed == HOTBLUE.ucRed))
+		return "HOTBLUE";
 	if ((c.ucBlue == WHITE.ucBlue) && (c.ucGreen == WHITE.ucGreen) && (c.ucRed == WHITE.ucRed))
 		return "WHITE";
 	if ((c.ucBlue == RED.ucBlue) && (c.ucGreen == RED.ucGreen) && (c.ucRed == RED.ucRed))

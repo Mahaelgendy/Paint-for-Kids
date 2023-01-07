@@ -13,7 +13,7 @@ public:
 		CEllipse();
 		virtual void DrawMe(GUI* pOut) const;
 		virtual bool IsInFig(int, int);
-		virtual void Resize(float);
+		virtual int Resize(float);
 		virtual void PrintInfo(GUI* pOut);
 		virtual void Save(ofstream& File);
 		virtual void Load(ifstream& File);

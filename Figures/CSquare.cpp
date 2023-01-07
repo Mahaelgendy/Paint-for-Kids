@@ -9,28 +9,35 @@ CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo
 	ID = 100+ newID++;
 	
 }
-CSquare::CSquare()
+CSquare::CSquare()//default constructor, We need it to Load
 {}
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 void CSquare::DrawMe(GUI* pGUI) const
 {
 	//Call Output::DrawRect to draw a Square on the screen	
 	pGUI->DrawSquare(TopLeftCorner, length, FigGfxInfo, Selected);
-	
-
 }
-void CSquare::Resize(float size) {
-	this->length = this->length * size;
-
+//////////////////////////////////////////////////////////////////////////////////////////////
+int CSquare::Resize(float size) {  //to increase and decrease size of figer
+	int newlen = this->length * size;
+	if (newlen + TopLeftCorner.x < UI.wx || newlen + TopLeftCorner.x > UI.width + UI.wx || newlen + TopLeftCorner.y < UI.StatusBarHeight || newlen + TopLeftCorner.y > UI.height - UI.StatusBarHeight)
+	{
+		return 1;
+	}
+	this->length = newlen;
+	return 0;
 }
-bool CSquare::IsInFig(int x, int y) {
+//////////////////////////////////////////////////////////////////////////////////////////////
+bool CSquare::IsInFig(int x, int y) 
+{//Determine the position of the point
 	if (x >= TopLeftCorner.x && x <= (TopLeftCorner.x + length) && y >= TopLeftCorner.y && y <= (TopLeftCorner.y + length))
 	{
 		return true;
 	}
 	return false;
 }
-void CSquare::PrintInfo(GUI* pOut)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CSquare::PrintInfo(GUI* pOut)  //Print Figer Data
 {
 	pOut->PrintMessage(string("Square =>ID: ") + to_string(ID) +
 		" =>Width: " + std::to_string(
@@ -39,7 +46,8 @@ void CSquare::PrintInfo(GUI* pOut)
 			" =>Height: " + std::to_string(abs((TopLeftCorner.y - (TopLeftCorner.y + length)))) +
 			" =>Area: " + std::to_string(int(area)));
 }
-void CSquare::Save(ofstream& File)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CSquare::Save(ofstream& File)//Write Figer Data On File 
 {
 	File << "Square\t" << ID << "\t" << TopLeftCorner.x << "\t" << TopLeftCorner.y << "\t" << length << "\t"
 		<< convertColortoString(FigGfxInfo.DrawClr) << "\t";
@@ -48,7 +56,8 @@ void CSquare::Save(ofstream& File)
 	else
 		File << "NON-FILLED\n";
 }
-void CSquare::Load(ifstream& Infile)
+//////////////////////////////////////////////////////////////////////////////////////////////
+void CSquare::Load(ifstream& Infile)  //Set the Load Data To figer 
 {
 	string temp;
 	Infile >> this->ID >> this->TopLeftCorner.x >> this->TopLeftCorner.y >> this->length;

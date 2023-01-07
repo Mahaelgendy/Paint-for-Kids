@@ -16,21 +16,46 @@ void ActionResize::Execute()
 		pGui->CreateResizeToolBar();
 		ActionType pAct = pGui->MapInputToActionType();
 		Selected = pManager->GetSelectedFigure();
+		int resized;
 		if (pAct == HALF)
 		{
-			Selected->Resize(.5);
+			resized=Selected->Resize(.5);
+			if (resized == 0) {
+				pGui->PrintMessage("Figure Resized :");
+			}
+			else {
+				pGui->PrintMessage("Can't Resize :");
+			}
 		}
 		else if (pAct == QUARTER)
 		{
-			Selected->Resize(.25);
+			resized=Selected->Resize(.25);
+			if (resized == 0) {
+				pGui->PrintMessage("Figure Resized :");
+			}
+			else {
+				pGui->PrintMessage("Can't Resize :");
+			}
 		}
 		else if (pAct == DOUBLE1)
 		{
-			Selected->Resize(2.0);
+			resized=Selected->Resize(2.0);
+			if (resized == 0) {
+				pGui->PrintMessage("Figure Resized :");
+			}
+			else {
+				pGui->PrintMessage("Can't Resize :");
+			}
 		}
 		else if (pAct == QUADRUPLE)
 		{
-			Selected->Resize(4);
+			resized=Selected->Resize(4);
+			if (resized == 0) {
+				pGui->PrintMessage("Figure Resized");
+			}
+			else {
+				pGui->PrintMessage("Can't Resize");
+			}
 		}
 		else if (pAct == BACK2)
 		{

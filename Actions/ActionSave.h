@@ -11,6 +11,7 @@ private:
 	int FigerCount;
 public:
 	ActionSave(ApplicationManager* pApp, int _FigerCount);
+	ActionSave(ApplicationManager* pApp);
 
 	virtual void Execute();
 };
