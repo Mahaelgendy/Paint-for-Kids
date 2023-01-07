@@ -115,6 +115,7 @@ const color PALEGREEN = color(152, 251, 152);
 const color SPRINGGREEN = color(0, 255, 127);
 const color LAWNGREEN = color(124, 252, 0);
 const color GREEN = color(0, 255, 0);
+const color HOTGREEN = color(0, 255, 1);
 const color CHARTREUSE = color(127, 255, 0);
 const color MEDIUMSPRINGGREEN = color(0, 250, 154);
 const color GREENYELLOW = color(173, 255, 47);

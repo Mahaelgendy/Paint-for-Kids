@@ -218,7 +218,7 @@ void PickByTypeAndColor::Execute()
 
 
 			}
-			else if (Fig->GetGfxInfo().FillClr == GREEN)
+			else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 			{
 				if (dynamic_cast<CEllipse*>(Fig))
 				{

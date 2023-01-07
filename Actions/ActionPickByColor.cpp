@@ -19,14 +19,14 @@ color ActionPickByColor::AssignColor(CFigure* Fig)
 		return BLACK;
 	else if (Fig->GetGfxInfo().FillClr == WHITE)
 		return WHITE;
-	else if (Fig->GetGfxInfo().FillClr == BLUE)
-		return BLUE;
-	else if (Fig->GetGfxInfo().FillClr == GREEN)
-		return GREEN;
+	else if (Fig->GetGfxInfo().FillClr == HOTBLUE)
+		return HOTBLUE;
+	else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
+		return HOTGREEN;
 	else if (Fig->GetGfxInfo().FillClr == HOTRED)
-		return RED;
+		return HOTRED;
 	else if (Fig->GetGfxInfo().FillClr == HOTYELLOW)
-		return YELLOW;
+		return HOTYELLOW;
 }
 void ActionPickByColor::PrintScore(int score)
 {
@@ -67,7 +67,7 @@ void ActionPickByColor::ReadActionParameters()
 				ColorsList[3]++;
 			else if (Fig->GetGfxInfo().FillClr == HOTYELLOW)
 				ColorsList[4]++;
-			else if (Fig->GetGfxInfo().FillClr == GREEN)
+			else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 				ColorsList[5]++;
 		}
 		else
@@ -93,7 +93,7 @@ void ActionPickByColor::Execute()
 				pickedColorNumber = ColorsList[0];
 				pGUI->PrintMessage("Pick Black Shapes");
 			}
-			else if (Fig->GetGfxInfo().FillClr == BLUE)
+			else if (Fig->GetGfxInfo().FillClr == HOTBLUE)
 			{
 				pickedColorNumber = ColorsList[1];
 				pGUI->PrintMessage("Pick Blue Shapes");
@@ -113,7 +113,7 @@ void ActionPickByColor::Execute()
 				pickedColorNumber = ColorsList[4];
 				pGUI->PrintMessage("Pick YELLOW Shapes");
 			}
-			else if (Fig->GetGfxInfo().FillClr == GREEN)
+			else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 			{
 				pickedColorNumber = ColorsList[5];
 				pGUI->PrintMessage("Pick GREEN Shapes");
