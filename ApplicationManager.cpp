@@ -323,7 +323,10 @@ int ApplicationManager::getSelectedCasePlay()
 {
 	return PlayModePlace;
 }
-
+int ApplicationManager::GetFigCount()
+{
+	return FigCount;
+}
 void ApplicationManager::setSelectedCasePlay(int place)
 {
 	PlayModePlace = place;

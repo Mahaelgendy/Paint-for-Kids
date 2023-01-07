@@ -61,6 +61,6 @@ public:
 	bool getFillColor();
 	void setFillColor(bool);
 	void DeleteAllFig();
-	
+	int GetFigCount();
 };
 #endif
