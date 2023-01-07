@@ -26,8 +26,6 @@
 #include "Actions\PickByTypeAndColor.h"
 
 
-
-
 //Constructor
 ApplicationManager::ApplicationManager()
 {

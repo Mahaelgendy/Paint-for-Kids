@@ -41,12 +41,15 @@ void ActionLoad::Execute()
 	pManager->DeleteAllFig();       //Delete The figure list  
 	  
 	File >> r >> g >> b;
-	color drawClr(r, g, b); 
+	color DrawColor(r, g, b); 
 	File >> r >> g >> b;
-	color FillClr(r, g, b);
+	color FillColor(r, g, b);
 
 	File >> r >> g >> b;
-	color bkgclr(r, g, b);
+	color BkGrndColor(r, g, b);
+	pGUI->setCrntDrawColor(DrawColor);
+	pGUI->setCrntFillColor(FillColor);
+	pGUI->setBackgroundColor(BkGrndColor);
 	File >> figcount;
 	
 	while (figcount)         //For each line on the file we will read it and determine its type
