@@ -27,8 +27,6 @@
 #include "Actions\ActionExit.h"
 
 
-
-
 //Constructor
 ApplicationManager::ApplicationManager()
 {

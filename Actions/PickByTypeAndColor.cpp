@@ -81,7 +81,7 @@ void PickByTypeAndColor::ReadActionParameters()
 			}
 			else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 			{
-				if (dynamic_cast<CEllipse*>(Fig))
+				if (dynamic_cast<CEllipse*>(Fig))  
 					combinations[9]++;
 				else if (dynamic_cast<CTriangle*>(Fig))
 					combinations[10]++;

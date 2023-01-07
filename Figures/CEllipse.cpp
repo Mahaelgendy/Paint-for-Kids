@@ -2,6 +2,8 @@
 #include<string>
 #include<fstream> 
 #include <iostream>
+#include <cstdlib>
+
 
 //constractor
 CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -9,7 +11,7 @@ CEllipse::CEllipse(Point _P1, Point _P2, GfxInfo FigureGfxInfo) :CFigure(FigureG
 	P1=_P1;
 	P2=_P2;
 	ID = 200 + newID++;
-	area = 3.1415f * P1.x * P2.x;
+	area =  abs( 3.1415f * min(P1.y , P2.y))* min(P1.y, P2.y);
 }
 CEllipse::CEllipse() //default constructor, We need it to Load
 {
@@ -53,8 +55,8 @@ void CEllipse::PrintInfo(GUI* pOut)  //Print Figer Data
 
 	pOut->PrintMessage(string("Ellipse =>ID: ") + to_string(ID) + 
 		" =>Width: " + to_string(abs(P1.x - P2.x)) +
-		" =>Height: " + std::to_string(std::abs(P1.y - P1.y)) +
-		" =>Area: " + std::to_string(area) +
+		" =>Height: " + std::to_string(std::abs(P1.y - P2.y)) +
+		" =>Area: " + std::to_string((int)area) +
 		" =>center: ( " + std::to_string(center.x) +
 		", " + to_string(center.y) + " )");
 }
