@@ -24,6 +24,7 @@
 #include "Actions\ActionSwitchToPlay.h"
 #include "Actions\PickByType.h"
 #include "Actions\PickByTypeAndColor.h"
+#include "Actions\ActionExit.h"
 
 
 
@@ -137,7 +138,7 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		
 		case EXIT:
-			///create ExitAction here
+			newAct = new ActionExit(this);
 			
 			break;
 		

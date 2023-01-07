@@ -137,6 +137,7 @@
     <ClCompile Include="Actions\ActionBringFront.cpp" />
     <ClCompile Include="Actions\ActionColor.cpp" />
     <ClCompile Include="Actions\ActionColorMenu.cpp" />
+    <ClCompile Include="Actions\ActionExit.cpp" />
     <ClCompile Include="Actions\ActionFillButton.cpp" />
     <ClCompile Include="Actions\ActionFillColor.cpp" />
     <ClCompile Include="Actions\ActionDelete.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Actions\ActionBringFront.h" />
     <ClInclude Include="Actions\ActionColor.h" />
     <ClInclude Include="Actions\ActionColorMenu.h" />
+    <ClInclude Include="Actions\ActionExit.h" />
     <ClInclude Include="Actions\ActionFillButton.h" />
     <ClInclude Include="Actions\ActionFillColor.h" />
     <ClInclude Include="Actions\ActionDelete.h" />

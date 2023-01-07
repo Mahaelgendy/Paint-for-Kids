@@ -16,6 +16,9 @@ ActionSave::ActionSave(ApplicationManager* pApp, int _FigerCount) :Action(pApp)
 {
 	FigerCount = _FigerCount;
 }
+ActionSave::ActionSave(ApplicationManager* pApp) :Action(pApp)
+{
+}
 
 
 //Execute the action
