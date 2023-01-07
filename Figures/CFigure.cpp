@@ -58,6 +58,11 @@ void CFigure::Save(ofstream& File)
 void CFigure::Load(ifstream& File)
 {};
 
+color CFigure::GetCurrentFillClr()
+{
+	return FigGfxInfo.FillClr;
+}
+
 GfxInfo CFigure::GetGfxInfo() const
 {
 	return FigGfxInfo;

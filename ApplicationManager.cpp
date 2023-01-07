@@ -17,6 +17,7 @@
 #include "Actions\ActionSendBack.h"
 #include "Actions\ActionPickByColor.h"
 #include "Actions\ActionExit.h"
+#include "Actions\ActionPLayWithColor.h"
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -134,6 +135,7 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case PLAY_COLORS:
 			//newAct = new ActionPickByColor(this);
+			newAct = new ActionPLayWithColors(this);
 			break;
 		case PLAY_SHAPES_COLORS:
 			newAct = new PickByTypeAndColor(this);
@@ -297,6 +299,34 @@ void ApplicationManager::SendToBack(int selectedIndex)
 		FigList[i] = FigList[i - 1];
 
 	FigList[0] = SelectedFigure;
+}
+void ApplicationManager::getFiguresColors(int* frequencyColor)
+{
+	color* colors = new color[FigCount];
+	for (int i = 0; i < FigCount; i++)
+	{
+		colors[i] = FigList[i]->GetCurrentFillClr();
+		if ((colors[i].ucBlue == RED.ucBlue) && (colors[i].ucGreen == RED.ucGreen) && (colors[i].ucRed == RED.ucRed))
+			frequencyColor[0]++;
+		else if ((colors[i].ucBlue == GREEN.ucBlue) && (colors[i].ucGreen == GREEN.ucGreen) && (colors[i].ucRed == GREEN.ucRed))
+			frequencyColor[1]++;
+		else if ((colors[i].ucBlue == BLUE.ucBlue) && (colors[i].ucGreen == BLUE.ucGreen) && (colors[i].ucRed == BLUE.ucRed))
+			frequencyColor[2]++;
+		else if ((colors[i].ucBlue == YELLOW.ucBlue) && (colors[i].ucGreen == YELLOW.ucGreen) && (colors[i].ucRed == YELLOW.ucRed))
+			frequencyColor[3]++;
+		else
+			frequencyColor[4]++;
+	}
+	delete[] colors;
+}
+int ApplicationManager::getSelectedCasePlay()
+{
+	return PlayModePlace;
+}
+
+void ApplicationManager::setSelectedCasePlay(int place)
+{
+	PlayModePlace = place;
 }
 //Destructor
 ApplicationManager::~ApplicationManager()

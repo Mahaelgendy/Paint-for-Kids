@@ -13,7 +13,7 @@ class ApplicationManager
 	enum { MaxFigCount = 200 };	//Max no of figures
 
 private:
-	int FigCount;		//Actual number of figures
+	int FigCount, PlayModePlace;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 	CFigure* SelectedFig;
 	//Pointers to Input and Output classes
@@ -48,9 +48,11 @@ public:
 
 	color stringToColor(string);
 	string colorToString(color);
-
+	void getFiguresColors( int *i);
 	void BringToFront( int selectedIndex);
 	void SendToBack( int selectedIndex);
+	void setSelectedCasePlay( int i);
+	int getSelectedCasePlay();
 
 	// -- Interface Management Functions	
 	GUI* GetGUI() const; //Return pointer to the interface
