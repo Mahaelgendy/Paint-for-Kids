@@ -70,7 +70,7 @@ void PickByTypeAndColor::ReadActionParameters()
 				else
 					combinations[5]++;
 			}
-			else if (Fig->GetGfxInfo().FillClr == BLUE)
+			else if (Fig->GetGfxInfo().FillClr == HOTBLUE)
 			{
 				if (dynamic_cast<CEllipse*>(Fig))
 					combinations[6]++;
@@ -79,7 +79,7 @@ void PickByTypeAndColor::ReadActionParameters()
 				else
 					combinations[8]++;
 			}
-			else if (Fig->GetGfxInfo().FillClr == GREEN)
+			else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 			{
 				if (dynamic_cast<CEllipse*>(Fig))
 					combinations[9]++;
@@ -114,10 +114,10 @@ void PickByTypeAndColor::ReadActionParameters()
 				else if (Fig->GetGfxInfo().FillClr == WHITE)
 					combinations[19]++;
 
-				else if (Fig->GetGfxInfo().FillClr == BLUE)
+				else if (Fig->GetGfxInfo().FillClr == HOTBLUE)
 					combinations[20]++;
 
-				else if (Fig->GetGfxInfo().FillClr == GREEN)
+				else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 					combinations[21]++;
 
 				else
@@ -195,7 +195,7 @@ void PickByTypeAndColor::Execute()
 				}
 
 			}
-			else if (Fig->GetGfxInfo().FillClr == BLUE)
+			else if (Fig->GetGfxInfo().FillClr == HOTBLUE)
 			{
 				if (dynamic_cast<CEllipse*>(Fig))
 				{
@@ -240,7 +240,7 @@ void PickByTypeAndColor::Execute()
 				}
 
 			}
-			else if (Fig->GetGfxInfo().FillClr == RED)
+			else if (Fig->GetGfxInfo().FillClr == HOTRED)
 			{
 				if (dynamic_cast<CEllipse*>(Fig))
 				{
@@ -295,13 +295,13 @@ void PickByTypeAndColor::Execute()
 					pickedFigNumber = combinations[19];
 					pGui->PrintMessage("Pick up black white squares!");
 				}
-				else if (Fig->GetGfxInfo().FillClr == BLUE)
+				else if (Fig->GetGfxInfo().FillClr == HOTBLUE)
 				{
 					pickedFigNumber = combinations[20];
 					pGui->PrintMessage("Pick up blue squares!");
 
 				}
-				else if (Fig->GetGfxInfo().FillClr == GREEN)
+				else if (Fig->GetGfxInfo().FillClr == HOTGREEN)
 				{
 					pickedFigNumber = combinations[21];
 					pGui->PrintMessage("Pick up green squares!");
