@@ -41,6 +41,7 @@ public:
 	CFigure* DrawnFigs(int i) const;
 
 	int* getFigCount();
+	int GetFigCount();
 	CFigure** getFigList();
 	int getSelectedFigure();
 

@@ -71,7 +71,7 @@ int CTriangle::Resize(float size) //to increase and decrease size of figer
 	if (newCorner3.x < UI.wx || newCorner3.x > UI.width + UI.wx) return 1;
 	
 	Corner1 = newCorner1;
-	Corner2 = newCorner2 ;
+	Corner2 = newCorner2;
 	Corner3 = newCorner3;
 	return 0;
 }

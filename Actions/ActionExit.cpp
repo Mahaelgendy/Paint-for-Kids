@@ -16,7 +16,7 @@ void ActionExit::Execute()
 	pGui->PrintMessage("If you want to save you graph before exit write (Y) else write (N) ");
 	string s = pGui->GetSrting();
 	if (s == "Y" || s == "y") {
-		Action* newAct = new ActionSave(pManager);
+		Action* newAct = new ActionSave(pManager, pManager->GetFigCount());
 		pManager->ExecuteAction(newAct);
 	}
 	else {

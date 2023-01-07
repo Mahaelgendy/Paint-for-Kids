@@ -137,7 +137,6 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		
 		case EXIT:
 			newAct = new ActionExit(this);
-			
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -185,6 +184,10 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 			}
 		}
 	return NULL;
+}
+int ApplicationManager::GetFigCount()
+{
+	return FigCount;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::DrawnFigs(int i) const
