@@ -54,6 +54,12 @@ void ActionAddHexagon::Execute()
 		minHorLen = abs(topLeft.x - 0.5 * horLen);
 		maxVerLen = topLeft.y + 2 * verLen;
 
+		if (minHorLen < UI.wx || maxHorLen > UI.width + UI.wx || maxVerLen < UI.StatusBarHeight || maxVerLen > UI.height - UI.StatusBarHeight)
+		{
+			pGUI->PrintMessage("Please click a valid point");
+			Sleep(1000);
+			pGUI->ClearStatusBar();
+		}
 	} while (minHorLen < UI.wx || maxHorLen > UI.width + UI.wx || maxVerLen < UI.StatusBarHeight || maxVerLen > UI.height - UI.StatusBarHeight);
 
 	//Step 3 - Create a Hexagon with the parameters read from the user

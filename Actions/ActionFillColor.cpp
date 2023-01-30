@@ -13,19 +13,22 @@ void ActionFillColor::Execute()
 {
 	Point P1;
 	color newFillColor;
+	bool flag = true;
 
 	//Get a Pointer to the Interface
 	GUI* pGUI = pManager->GetGUI();
 	
 	
 
-	
+	do{
 	//Read 1st point to pick fill color
 	pGUI->PrintMessage("Pick Fill Color: Click at Color");
 	//Get 1st point and store it in color
 	pGUI->GetPointClicked(P1.x, P1.y);
 	newFillColor = pGUI->pWind->GetColor(P1.x, P1.y);
-	
+		if (newFillColor == BLACK || newFillColor == HOTRED || newFillColor == WHITE || newFillColor == HOTBLUE || newFillColor == HOTGREEN || newFillColor == HOTYELLOW)
+			flag = false;
+	} while (flag);
 	
 	CFigure* figSelected = pManager->GetSelectedFigure();
 	CFigure* figNotSelected = pManager->GetNotSelectedFigure();
